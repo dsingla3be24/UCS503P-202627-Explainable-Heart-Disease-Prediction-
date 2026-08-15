@@ -1,0 +1,418 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amsmath}
+
+% -----------------------------------------------------
+% bvraghav-tiet-ucs503p-article.sty
+% -----------------------------------------------------
+
+% Variable: Lab Instructor
+\makeatletter \newcommand{\BvrSetLabInstructor}[1]{%
+  \gdef\Bvr@LabInstructor{#1}}
+% default
+\newcommand{\Bvr@LabInstructor}{Dr. Raghav %
+  B. Venkataramaiyer}
+% public accessor
+\newcommand{\BvrLabInstructorValue}{\Bvr@LabInstructor}
+\makeatother
+
+% Add subtitle
+\usepackage{titling}
+% -- Set title bold
+\pretitle{\begin{center}\bfseries\fontsize{18bp}{18bp}\selectfont}
+\makeatletter
+\newcommand{\BvrSubtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip 0.5em}%
+}
+\makeatother
+
+% Hints in the section title(s)
+\newcommand{\BvrHint}[1]{%
+  {\normalfont\normalsize\itshape\hfill #1}}
+
+% -----------------------------------------------------
+
+\title{Cardio AI: Explainable Heart Disease Prediction using\\CNN-LSTM Attention Network with Grad-CAM Interpretability}
+
+\BvrSetLabInstructor{Nisha Thakur}
+
+\BvrSubtitle{%
+  Project Proposal for UCS503P  \\
+  Submitted to: \BvrLabInstructorValue \\ \bfseries
+  Thapar Institute of Engineering and Technology%
+}
+
+\author{
+  Dhruv Singla, CSED%
+  \thanks{Roll No: \texttt{1024170434}, %
+    Email: \texttt{dsingla3\_be24@thapar.edu}}
+  \and
+  Srishti, CSED%
+  \thanks{Roll No: \texttt{1024170451}, %
+    Email: \texttt{ssrishti1\_be24@thapar.edu}}
+}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% ===========================================================================
+\section{Higher-order goal%
+  \BvrHint{\ldots secondary framing}}
+% ===========================================================================
+This project aims to improve \emph{clinical transparency in cardiac
+diagnostics} by making AI-driven heart disease predictions
+interpretable to both clinicians and patients. While the broader
+aspiration is trustworthy medical AI, the immediate engineering
+objective is to build a deployable, explainable prediction system
+that translates deep learning confidence scores into actionable
+clinical narratives.
+
+% ===========================================================================
+\section{Time-to-value%
+  \BvrHint{\ldots primary heuristic}}
+% ===========================================================================
+\begin{itemize}[leftmargin=0.7cm]
+    \item We will deliver meaningful increments quickly by first
+      training and validating the CNN-LSTM-Attention model on the
+      Cleveland dataset, then layering explainability (Grad-CAM,
+      Attention, SHAP) and the clinical web interface in successive
+      iterations.
+    \item We will prioritize fast feedback over perfection by using
+      short iteration cycles: model accuracy is validated before
+      explainability modules are integrated, and each module is
+      independently testable.
+    \item Success is defined by what can be measured in the first
+      iteration (holdout AUC $\geq 0.85$), then improved based on
+      cross-validation and clinical-alignment feedback.
+\end{itemize}
+
+% ===========================================================================
+\section{Problem Statement}
+% ===========================================================================
+Cardiovascular disease remains the leading cause of mortality
+globally. Early prediction from routine clinical measurements
+(blood pressure, cholesterol, ECG markers) can significantly
+improve patient outcomes. However, current challenges include:
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{Black-box predictions:} Deep learning models
+      achieve high accuracy but offer no clinical reasoning, making
+      physicians reluctant to trust automated diagnoses.
+    \item \textbf{Feature opacity:} With 13 heterogeneous clinical
+      features (numerical vitals, categorical ECG types, binary
+      indicators), understanding \emph{which} features drive a
+      specific patient's risk is non-trivial.
+    \item \textbf{Limited visual evidence:} Clinicians lack
+      visual artifacts (heatmaps, feature importance charts) that
+      map model confidence back to physiological parameters.
+    \item \textbf{No longitudinal tracking:} Existing tools
+      rarely support patient-history-aware predictions or trend
+      analysis across repeated assessments.
+\end{itemize}
+
+\textbf{Why this matters now (contextual relevance):} As AI-assisted
+diagnosis tools enter clinical workflows, regulatory bodies and
+medical ethics demand interpretable, auditable predictions ---
+not just accurate ones.
+
+% ===========================================================================
+\section{Proposed Solution%
+  \BvrHint{\ldots Software Proposition}}
+% ===========================================================================
+
+\subsection{Overview}
+Build a \textbf{web-based} explainable cardiac risk prediction
+system with the following components:
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{CNN-LSTM-Attention deep learning model:} trained
+      on the UCI Cleveland Heart Disease dataset (303 records,
+      13 clinical features) with GAF image encoding for
+      spatiotemporal feature extraction.
+    \item \textbf{Multi-method explainability engine:} Grad-CAM
+      heatmaps, attention weight visualization, and SHAP values
+      providing three complementary lenses on model reasoning.
+    \item \textbf{Clinical report generator:} automated PDF reports
+      with narrative summaries, feature-by-feature clinical
+      interpretation, and guideline-referenced evaluations.
+    \item \textbf{Patient management portal:} Flask-based web
+      interface with patient registration, longitudinal history
+      tracking, and searchable records via MySQL backend.
+    \item \textbf{Interactive visualization dashboard:} Plotly-based
+      charts for real-time XAI comparison (Attention vs.\ Grad-CAM
+      vs.\ SHAP).
+\end{itemize}
+
+\subsection{Core workflow}
+\begin{enumerate}[leftmargin=0.7cm]
+    \item Clinician enters patient clinical parameters (age, blood
+      pressure, cholesterol, ECG markers, etc.) via the web form.
+    \item System preprocesses inputs using a ClinicalRangeScaler
+      (physiological-bound normalization), converts to GAF image
+      representation, and runs prediction through the
+      CNN-LSTM-Attention model.
+    \item Explainability engine generates Grad-CAM heatmap,
+      extracts attention weights, and computes SHAP attributions.
+    \item System produces an interactive dashboard with XAI
+      visualizations and a downloadable PDF clinical report with
+      guideline-referenced narrative.
+    \item Patient record is persisted to MySQL database for
+      longitudinal tracking and future comparisons.
+\end{enumerate}
+
+\subsection{Operational constraints for an educational setting}
+\begin{itemize}[leftmargin=0.7cm]
+    \item Use the publicly available Cleveland dataset (303 records)
+      --- no patient consent or privacy concerns.
+    \item Keep the web interface responsive and usable on standard
+      hardware without GPU requirements at inference time.
+    \item Design for local deployment (Flask + MySQL) with a clear
+      path to containerized hosting.
+\end{itemize}
+
+% ===========================================================================
+\section{Solution Approach%
+  \BvrHint{\ldots Engineering focus}}
+% ===========================================================================
+This project combines deep learning engineering with clinical
+interpretability, focusing on robust pipeline design and
+multi-method XAI rather than novel architecture research.
+
+\subsection{Data preprocessing pipeline%
+  \BvrHint{\ldots non-research}}
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{Missing value handling:} median imputation for
+      Cleveland \texttt{ca} and \texttt{thal} columns (marked as
+      \texttt{?}).
+    \item \textbf{Outlier treatment:} IQR-based capping to preserve
+      dataset size on a small ($n=303$) dataset.
+    \item \textbf{Feature scaling:} custom ClinicalRangeScaler using
+      fixed physiological boundaries (e.g., age: 25--85, BP:
+      80--200~mmHg) instead of dataset-dependent statistics,
+      ensuring out-of-sample consistency.
+    \item \textbf{Encoding:} one-hot encoding for categorical
+      features (chest pain type, thal, slope, etc.) with explicit
+      feature-to-index mapping for XAI aggregation.
+    \item \textbf{Image transformation:} Gramian Angular Summation
+      Field (GASF) encoding converts 1D feature vectors to 2D
+      images for Conv2D input.
+    \item \textbf{Class balancing:} SMOTE oversampling on the
+      training split with fallback to class-weighted loss.
+\end{itemize}
+
+\subsection{Model architecture%
+  \BvrHint{\ldots deep learning}}
+A hybrid CNN-LSTM-Attention architecture:
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{Conv2D layers:} extract spatial correlations from
+      GAF-encoded feature images.
+    \item \textbf{LSTM layer:} captures sequential/temporal
+      dependencies across feature dimensions.
+    \item \textbf{Attention mechanism:} learns to weight feature
+      contributions, providing an inherently interpretable
+      bottleneck.
+    \item \textbf{Output:} sigmoid activation for binary
+      classification (heart disease present/absent).
+\end{itemize}
+
+\subsection{Explainability methods%
+  \BvrHint{\ldots interpretable AI}}
+Three complementary XAI techniques:
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{Grad-CAM:} gradient-weighted class activation maps
+      on the final Conv2D layer, averaged to 1D feature importance.
+    \item \textbf{Attention weights:} extracted from the attention
+      layer and aggregated from one-hot indices back to original
+      clinical features.
+    \item \textbf{SHAP values:} model-agnostic Shapley attributions
+      providing per-feature contribution with directionality.
+\end{itemize}
+
+\subsection{Web architecture%
+  \BvrHint{\ldots web-based solution}}
+A 3-tier architecture:
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{Frontend:} HTML/CSS/JS with Plotly.js for
+      interactive XAI charts and responsive patient input forms.
+    \item \textbf{Backend API:} Flask (Python) serving prediction,
+      explainability, PDF generation, and patient search endpoints.
+    \item \textbf{Database:} MySQL storing patients, clinical
+      records, AI diagnoses, and PDF report paths.
+\end{itemize}
+
+% ===========================================================================
+\section{Evaluation Criterion%
+  \BvrHint{\ldots measurable and attributable}}
+% ===========================================================================
+We define success using measurable metrics tied to both model
+performance and clinical interpretability.
+
+\subsection{Primary evaluation metric}
+\textbf{Area Under the ROC Curve (AUC-ROC):} measures the
+model's ability to discriminate between heart disease and
+normal cases across all classification thresholds.
+\begin{itemize}[leftmargin=0.7cm]
+    \item Target: AUC $\geq 0.85$ on the 20\% holdout test set.
+    \item Attribution: computed from model probability outputs
+      against ground-truth binary labels.
+\end{itemize}
+
+\subsection{Secondary evaluation metrics}
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{Accuracy, Precision, Recall, F1-Score:}
+      standard classification metrics on the holdout test set.
+    \item \textbf{Cross-validation stability:} 5-fold stratified
+      CV to verify generalization (target: CV AUC std $\leq 0.05$).
+    \item \textbf{XAI clinical alignment:} top-3 features
+      identified by Grad-CAM, Attention, and SHAP are
+      cross-referenced against established clinical risk factors
+      (e.g., \texttt{ca}, \texttt{thal}, \texttt{cp},
+      \texttt{oldpeak}) per ACC/AHA guidelines.
+    \item \textbf{Report completeness:} generated PDF reports
+      contain narrative summary, feature-level evaluation against
+      clinical guidelines, and risk-stratified recommendations.
+\end{itemize}
+
+\subsection{Pilot validation plan%
+  \BvrHint{\ldots high-level}}
+\begin{itemize}[leftmargin=0.7cm]
+    \item Validate predictions on all 303 Cleveland dataset records
+      using nearest-neighbour ground-truth matching.
+    \item Demonstrate the web portal end-to-end: form submission
+      $\rightarrow$ prediction $\rightarrow$ XAI dashboard
+      $\rightarrow$ PDF report $\rightarrow$ patient history
+      retrieval.
+    \item Collect qualitative feedback from 3--5 peers on report
+      readability and XAI visualization clarity.
+\end{itemize}
+
+% ===========================================================================
+\section{Scalability%
+  \BvrHint{\ldots with foresight}}
+% ===========================================================================
+The proposition should scale in both theoretical and practical senses.
+
+\begin{enumerate}[leftmargin=0.7cm]
+    \item \textbf{Scalable (theoretically):} The system should
+    support growth in patient volume and model complexity by:
+    \begin{itemize}[leftmargin=0.7cm]
+        \item decoupling the prediction engine from the web server
+          (API-first design),
+        \item stateless API design supporting future horizontal
+          scaling,
+        \item using SQL queries for patient history search.
+    \end{itemize}
+
+    \item \textbf{Operationally deployable (practically):} The
+    system should run on standard infrastructure:
+    \begin{itemize}[leftmargin=0.7cm]
+        \item Flask + Docker-hosted MySQL on any Windows/Linux/macOS host,
+        \item containerizable via Docker for reproducible deployment,
+        \item model weights serialized for inference without
+          retraining.
+    \end{itemize}
+\end{enumerate}
+
+% ===========================================================================
+\section{Engine availability heuristic}
+% ===========================================================================
+A mature set of ``engines'' (tooling/libraries) is available to
+implement this project:
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{TensorFlow/Keras:} CNN-LSTM-Attention model
+      construction, training, Grad-CAM computation.
+    \item \textbf{scikit-learn:} preprocessing, train-test splitting,
+      classification metrics, cross-validation.
+    \item \textbf{imbalanced-learn:} SMOTE for class balancing.
+    \item \textbf{SHAP:} model-agnostic Shapley value computation.
+    \item \textbf{Flask:} lightweight web framework for REST API
+      and template rendering.
+    \item \textbf{PyMySQL:} MySQL database connectivity.
+    \item \textbf{Plotly.js:} interactive client-side XAI
+      visualizations.
+    \item \textbf{Microsoft Edge (headless):} HTML-to-PDF clinical
+      report conversion.
+    \item \textbf{Pandas, NumPy, Matplotlib, Seaborn:} data
+      manipulation, EDA, and static plotting.
+\end{itemize}
+We will use these mature components to focus on pipeline
+correctness, explainability quality, and clinical alignment rather
+than inventing new infrastructure.
+
+% ===========================================================================
+\section{Project scope and deliverables%
+  \BvrHint{\ldots iteration-friendly}}
+% ===========================================================================
+
+\subsection{Initial deliverable%
+  \BvrHint{\ldots first iteration}}
+\begin{itemize}[leftmargin=0.7cm]
+    \item EDA pipeline: missing values, duplicates, class
+      distribution, correlation analysis
+    \item Preprocessing pipeline: ClinicalRangeScaler, one-hot
+      encoding, GASF transformation, SMOTE
+    \item CNN-LSTM-Attention model: training with holdout evaluation
+      and 5-fold cross-validation
+    \item Grad-CAM and Attention weight extraction with
+      one-hot-to-original feature aggregation
+    \item Basic Flask endpoint: accepts patient features, returns
+      prediction and XAI weights
+\end{itemize}
+
+\subsection{Subsequent deliverables}
+\begin{itemize}[leftmargin=0.7cm]
+    \item SHAP integration for model-agnostic feature attribution
+    \item Interactive Plotly.js dashboard for XAI comparison
+      (Attention vs.\ Grad-CAM vs.\ SHAP)
+    \item PDF clinical report generator with guideline-referenced
+      narrative summaries
+    \item Patient management: registration, longitudinal history
+      tracking, search API
+    \item GAF image visualization and 2D Grad-CAM heatmap display
+    \item Subgroup-aware performance metrics (by age group, sex)
+\end{itemize}
+
+% ===========================================================================
+\section{Risks and mitigations}
+% ===========================================================================
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{Small dataset ($n=303$):} mitigate via
+      stratified splitting, SMOTE, cross-validation, and IQR
+      outlier capping to maximize data utility.
+    \item \textbf{Overfitting on small data:} EarlyStopping,
+      ReduceLROnPlateau, and ModelCheckpoint callbacks; dropout
+      regularization in the network.
+    \item \textbf{XAI disagreement across methods:} present all
+      three methods (Grad-CAM, Attention, SHAP) side-by-side;
+      highlight consensus features rather than relying on a single
+      method.
+    \item \textbf{Clinical misinterpretation:} clearly label all
+      outputs as ``AI-assisted, not diagnostic''; reference
+      ACC/AHA clinical guidelines in reports.
+    \item \textbf{TensorFlow deployment issues:} maintain a
+      lightweight fallback inference path using NumPy-based
+      forward pass for environments without GPU/native TF support.
+\end{itemize}
+
+% ===========================================================================
+\section{Summary}
+% ===========================================================================
+This project proposes a deployable, explainable heart disease
+prediction system combining a CNN-LSTM-Attention deep learning
+model with multi-method interpretability (Grad-CAM, Attention
+weights, SHAP). It meets the course criteria by emphasizing
+time-to-value through iterative model--explainability--interface
+delivery, using measurable evaluation criteria (AUC-ROC $\geq 0.85$,
+cross-validation stability, clinical feature alignment), and
+producing clinician-readable PDF reports. The system is designed
+for scalable deployment via a Flask web portal with MySQL-backed
+patient history management.
+
+\end{document}
