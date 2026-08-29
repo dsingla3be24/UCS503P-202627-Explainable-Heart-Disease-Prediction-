@@ -1,10 +1,10 @@
 # Week 1: Project Proposal
 
 - **Date:** 8 August to 14 August 2026
-- **Task:** We prepared the project proposal for "Cardio AI: Explainable Heart Disease Prediction using CNN-LSTM Attention Network with Grad-CAM Interpretability".
+- **Task:** Finalized and submitted the project proposal for Cardio AI.
 - **Contributions:**
-  - Defined the problem statement addressing black-box predictions in cardiac diagnostics and established the higher-order goal of clinical transparency.
-  - Proposed a hybrid CNN-LSTM-Attention architecture with multi-method explainability (Grad-CAM, Attention, SHAP).
-  - Outlined the system architecture including a Flask web portal, MySQL backend, and an interactive Plotly dashboard for XAI visualizations.
-  - Established measurable evaluation criteria including a target AUC-ROC $\ge$ 0.85 and cross-validation stability.
-  - Drafted the formal proposal document detailing the time-to-value heuristic, operational constraints, and risk mitigation strategies.
+  - Wrote up the core problem statement, focusing on how we can make deep learning in cardiac diagnostics more transparent rather than just a black box.
+  - Sketched out the initial architecture for the CNN-LSTM-Attention network and decided on using Grad-CAM, Attention, and SHAP to handle the explainability (XAI) side of things.
+  - Planned the tech stack and system flow: a Flask backend, MySQL for patient data, and Plotly to render the interactive XAI dashboards on the frontend.
+  - Set our baseline evaluation metrics, aiming for an AUC-ROC of at least 0.85 and validating generalization with 5-fold cross-validation.
+  - Documented our operational constraints, potential risks (like overfitting on the small Cleveland dataset), and how we plan to mitigate them to deliver value quickly.
