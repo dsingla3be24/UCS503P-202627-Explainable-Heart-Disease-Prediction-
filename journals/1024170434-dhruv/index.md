@@ -5,3 +5,4 @@
 
 ## Entries
 - [Week 1: Project Proposal](w1-proposal.md)
+- [Week 2: Use Case Diagram & Actor Modeling](w2-usecase.md)

@@ -1,7 +1,7 @@
 # 🚀 Week 1: Project Proposal & Architecture Definition
 
 **📅 Date:** August 8 – August 14, 2026  
-**🎯 Core Task:** Finalized and submitted the official project proposal for **Cardio AI**.
+**🎯 Core Task:** Architected the technical project proposal for the Cardio AI prediction engine, outlining the deep learning pipeline, tech stack, and evaluation metrics.
 
 ---
 
