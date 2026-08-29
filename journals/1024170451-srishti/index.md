@@ -5,3 +5,4 @@
 
 ## Entries
 - [Week 1: Project Proposal](w1-proposal.md)
+- [Week 2: Gantt Chart](w2-ganttchart.md)
