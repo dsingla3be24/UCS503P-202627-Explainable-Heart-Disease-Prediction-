@@ -1,10 +1,17 @@
-# Week 1: Project Proposal
+# 🚀 Week 1: Project Proposal & Architecture Definition
 
-- **Date:** 8 August to 14 August 2026
-- **Task:** Finalized and submitted the project proposal for Cardio AI.
-- **Contributions:**
-  - Wrote up the core problem statement, focusing on how we can make deep learning in cardiac diagnostics more transparent rather than just a black box.
-  - Sketched out the initial architecture for the CNN-LSTM-Attention network and decided on using Grad-CAM, Attention, and SHAP to handle the explainability (XAI) side of things.
-  - Planned the tech stack and system flow: a Flask backend, MySQL for patient data, and Plotly to render the interactive XAI dashboards on the frontend.
-  - Set our baseline evaluation metrics, aiming for an AUC-ROC of at least 0.85 and validating generalization with 5-fold cross-validation.
-  - Documented our operational constraints, potential risks (like overfitting on the small Cleveland dataset), and how we plan to mitigate them to deliver value quickly.
+**📅 Date:** August 8 – August 14, 2026  
+**🎯 Core Task:** Finalized and submitted the official project proposal for **Cardio AI**.
+
+---
+
+### 🛠️ Key Contributions & Decisions
+
+* **Defined the Problem Space:** Drafted the core problem statement, shifting the focus from standard heart disease classification to **clinical transparency**—making deep learning explainable rather than a black box.
+* **Architectural Blueprint:** Sketched out the initial model architecture utilizing a hybrid **CNN-LSTM-Attention network**. Decided to implement a multi-method XAI approach leveraging **Grad-CAM**, **Attention Weights**, and **SHAP**.
+* **Tech Stack Finalization:** Mapped out the end-to-end system flow:
+  * **Backend:** Flask for the REST API.
+  * **Database:** MySQL for patient records and history.
+  * **Frontend Visualization:** Plotly.js for rendering interactive, real-time XAI dashboards.
+* **Evaluation Benchmarks:** Established our baseline metrics, aiming for a minimum **AUC-ROC of 0.85**, supported by robust 5-fold cross-validation to ensure generalization.
+* **Risk Mitigation:** Documented operational constraints and identified potential risks (e.g., overfitting on the limited Cleveland dataset). Outlined strategies to deliver immediate value and fail fast through rapid iteration.
