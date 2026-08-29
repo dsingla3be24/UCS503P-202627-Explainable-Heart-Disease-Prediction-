@@ -1,0 +1,241 @@
+<mxfile host="app.diagrams.net" modified="2026-08-23" type="device">
+  <diagram name="Use Case Diagram" id="use-case-1">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ═══════ TITLE ═══════ -->
+        <mxCell id="title" value="&lt;b style='font-size:18px;color:#1a1a2e'&gt;CardioAI – UML Use Case Diagram&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="500" y="10" width="500" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ═══════ SYSTEM BOUNDARY ═══════ -->
+        <mxCell id="sys_boundary" value="&lt;b style='font-size:14px;'&gt;CardioAI – Heart Disease Prediction System&lt;/b&gt;" style="shape=mxgraph.sysml.package;html=1;overflow=fill;whiteSpace=wrap;align=center;verticalAlign=top;spacingTop=5;strokeColor=#3b82f6;fillColor=none;strokeWidth=2;labelBackgroundColor=none;fontSize=14;fontColor=#2563eb;dashed=1;dashPattern=8 4;" vertex="1" parent="1">
+          <mxGeometry x="220" y="70" width="940" height="1080" as="geometry"/>
+        </mxCell>
+
+        <!-- ═══════ ACTOR: CLINICIAN (Primary) ═══════ -->
+        <mxCell id="actor_clinician" value="&lt;b&gt;Clinician&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#666'&gt;(Primary Actor)&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#DBEAFE;strokeColor=#2563EB;fontColor=#2563eb;fontSize=11;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="380" width="40" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ═══════ ACTOR: PATIENT (Stakeholder) ═══════ -->
+        <mxCell id="actor_patient" value="&lt;b&gt;Patient&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#666'&gt;(Stakeholder)&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#EDE9FE;strokeColor=#7C3AED;fontColor=#7c3aed;fontSize=11;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="760" width="40" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ═══════ ACTOR: ML ENGINE (Supporting) ═══════ -->
+        <mxCell id="actor_ml" value="&lt;b&gt;ML Engine&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#666'&gt;(Supporting Actor)&lt;/font&gt;" style="shape=mxgraph.sysml.actor;html=1;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;fillColor=#CCFBF1;strokeColor=#0D9488;fontColor=#0d9488;fontSize=11;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="300" width="40" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ═══════ ACTOR: DATABASE (Supporting) ═══════ -->
+        <mxCell id="actor_db" value="&lt;b&gt;MySQL Database&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#666'&gt;(Supporting Actor)&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=8;fillColor=#FFE4E6;strokeColor=#E11D48;fontColor=#e11d48;fontSize=11;verticalLabelPosition=bottom;verticalAlign=top;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="720" width="60" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- ═══════ USE CASES (18 Total) ═══════ -->
+        <!-- ═══════════════════════════════════════════ -->
+
+        <!-- UC1: Enter Patient Clinical Data -->
+        <mxCell id="uc1" value="&lt;b&gt;Enter Patient&lt;br&gt;Clinical Data&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3b82f6;strokeWidth=2;fontSize=11;fontColor=#1e3a8a;" vertex="1" parent="1">
+          <mxGeometry x="380" y="110" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- UC2: Run Exploratory Data Analysis -->
+        <mxCell id="uc2" value="&lt;b&gt;Run Exploratory&lt;br&gt;Data Analysis (EDA)&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10b981;strokeWidth=2;fontSize=11;fontColor=#064e3b;" vertex="1" parent="1">
+          <mxGeometry x="630" y="110" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- UC3: Predict Heart Disease Risk -->
+        <mxCell id="uc3" value="&lt;b&gt;Predict Heart&lt;br&gt;Disease Risk&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F5F3FF;strokeColor=#8b5cf6;strokeWidth=2;fontSize=11;fontColor=#4c1d95;" vertex="1" parent="1">
+          <mxGeometry x="540" y="220" width="170" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- UC4: View XAI Explanations -->
+        <mxCell id="uc4" value="&lt;b&gt;View XAI&lt;br&gt;Explanations&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#f59e0b;strokeWidth=2;fontSize=11;fontColor=#78350f;" vertex="1" parent="1">
+          <mxGeometry x="380" y="320" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- UC5: Download PDF Diagnostic Report -->
+        <mxCell id="uc5" value="&lt;b&gt;Download PDF&lt;br&gt;Diagnostic Report&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FDF2F8;strokeColor=#ec4899;strokeWidth=2;fontSize=11;fontColor=#831843;" vertex="1" parent="1">
+          <mxGeometry x="380" y="420" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- UC6: Search Patient History -->
+        <mxCell id="uc6" value="&lt;b&gt;Search Patient&lt;br&gt;History&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3b82f6;strokeWidth=2;fontSize=11;fontColor=#1e3a8a;" vertex="1" parent="1">
+          <mxGeometry x="380" y="520" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- UC7: Train & Cross-Validate Models -->
+        <mxCell id="uc7" value="&lt;b&gt;Train &amp;amp; Cross-&lt;br&gt;Validate Models&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366f1;strokeWidth=2;fontSize=11;fontColor=#312e81;" vertex="1" parent="1">
+          <mxGeometry x="380" y="620" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- UC8: Run Ablation Study -->
+        <mxCell id="uc8" value="&lt;b&gt;Run Ablation&lt;br&gt;Study&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366f1;strokeWidth=2;fontSize=11;fontColor=#312e81;" vertex="1" parent="1">
+          <mxGeometry x="380" y="720" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- UC9: Hyperparameter Tuning -->
+        <mxCell id="uc9" value="&lt;b&gt;Hyperparameter&lt;br&gt;Tuning&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#6366f1;strokeWidth=2;fontSize=11;fontColor=#312e81;" vertex="1" parent="1">
+          <mxGeometry x="380" y="820" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- UC10: Preprocess & GAF Transform -->
+        <mxCell id="uc10" value="&lt;b&gt;Preprocess &amp;amp; GAF&lt;br&gt;Transform&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F0FDFA;strokeColor=#14b8a6;strokeWidth=2;fontSize=11;fontColor=#134e4a;" vertex="1" parent="1">
+          <mxGeometry x="780" y="310" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- UC11: Run CNN-LSTM Attention Model -->
+        <mxCell id="uc11" value="&lt;b&gt;Run CNN-LSTM&lt;br&gt;Attention Model&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F0FDFA;strokeColor=#14b8a6;strokeWidth=2;fontSize=11;fontColor=#134e4a;" vertex="1" parent="1">
+          <mxGeometry x="780" y="210" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- UC12: Compute Grad-CAM -->
+        <mxCell id="uc12" value="&lt;b&gt;Compute&lt;br&gt;Grad-CAM&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#f59e0b;strokeWidth=2;fontSize=11;fontColor=#78350f;" vertex="1" parent="1">
+          <mxGeometry x="800" y="420" width="150" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- UC13: Compute SHAP Values -->
+        <mxCell id="uc13" value="&lt;b&gt;Compute SHAP&lt;br&gt;Values&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#f59e0b;strokeWidth=2;fontSize=11;fontColor=#78350f;" vertex="1" parent="1">
+          <mxGeometry x="800" y="500" width="150" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- UC14: Extract Attention Weights -->
+        <mxCell id="uc14" value="&lt;b&gt;Extract Attention&lt;br&gt;Weights&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#f59e0b;strokeWidth=2;fontSize=11;fontColor=#78350f;" vertex="1" parent="1">
+          <mxGeometry x="800" y="580" width="150" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- UC15: Manage Patient Records -->
+        <mxCell id="uc15" value="&lt;b&gt;Manage Patient&lt;br&gt;Records&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#f43f5e;strokeWidth=2;fontSize=11;fontColor=#881337;" vertex="1" parent="1">
+          <mxGeometry x="720" y="700" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- UC16: Generate Clinical Narrative Report -->
+        <mxCell id="uc16" value="&lt;b&gt;Generate Clinical&lt;br&gt;Narrative Report&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FDF2F8;strokeColor=#ec4899;strokeWidth=2;fontSize=11;fontColor=#831843;" vertex="1" parent="1">
+          <mxGeometry x="660" y="850" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- UC17: Apply Clinical Guideline Rules -->
+        <mxCell id="uc17" value="&lt;b&gt;Apply Clinical&lt;br&gt;Guideline Rules&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#f43f5e;strokeWidth=2;fontSize=11;fontColor=#881337;" vertex="1" parent="1">
+          <mxGeometry x="660" y="960" width="150" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- UC18: Compute XAI Agreement Metrics -->
+        <mxCell id="uc18" value="&lt;b&gt;Compute XAI&lt;br&gt;Agreement Metrics&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#f59e0b;strokeWidth=2;fontSize=11;fontColor=#78350f;" vertex="1" parent="1">
+          <mxGeometry x="960" y="460" width="150" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- ═══════ ASSOCIATION LINES (Clinician) ═══════ -->
+        <!-- ═══════════════════════════════════════════ -->
+
+        <!-- Clinician → UC1 -->
+        <mxCell id="a_c_uc1" style="endArrow=none;html=1;strokeColor=#64748B;strokeWidth=2;" edge="1" source="actor_clinician" target="uc1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- Clinician → UC2 -->
+        <mxCell id="a_c_uc2" style="endArrow=none;html=1;strokeColor=#64748B;strokeWidth=2;" edge="1" source="actor_clinician" target="uc2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- Clinician → UC3 -->
+        <mxCell id="a_c_uc3" style="endArrow=none;html=1;strokeColor=#64748B;strokeWidth=2;" edge="1" source="actor_clinician" target="uc3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- Clinician → UC4 -->
+        <mxCell id="a_c_uc4" style="endArrow=none;html=1;strokeColor=#64748B;strokeWidth=2;" edge="1" source="actor_clinician" target="uc4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- Clinician → UC5 -->
+        <mxCell id="a_c_uc5" style="endArrow=none;html=1;strokeColor=#64748B;strokeWidth=2;" edge="1" source="actor_clinician" target="uc5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- Clinician → UC6 -->
+        <mxCell id="a_c_uc6" style="endArrow=none;html=1;strokeColor=#64748B;strokeWidth=2;" edge="1" source="actor_clinician" target="uc6" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- Clinician → UC7 -->
+        <mxCell id="a_c_uc7" style="endArrow=none;html=1;strokeColor=#64748B;strokeWidth=2;" edge="1" source="actor_clinician" target="uc7" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- Clinician → UC8 -->
+        <mxCell id="a_c_uc8" style="endArrow=none;html=1;strokeColor=#64748B;strokeWidth=2;" edge="1" source="actor_clinician" target="uc8" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- Clinician → UC9 -->
+        <mxCell id="a_c_uc9" style="endArrow=none;html=1;strokeColor=#64748B;strokeWidth=2;" edge="1" source="actor_clinician" target="uc9" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- ═══════ ASSOCIATION LINES (Patient) ═══════ -->
+        <!-- ═══════════════════════════════════════════ -->
+
+        <!-- Patient → UC5 (stakeholder, dashed) -->
+        <mxCell id="a_p_uc5" style="endArrow=none;html=1;strokeColor=#7c3aed;strokeWidth=1.5;dashed=1;" edge="1" source="actor_patient" target="uc5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- Patient → UC6 (stakeholder, dashed) -->
+        <mxCell id="a_p_uc6" style="endArrow=none;html=1;strokeColor=#7c3aed;strokeWidth=1.5;dashed=1;" edge="1" source="actor_patient" target="uc6" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- ═══════ ASSOCIATION LINES (ML Engine) ═══════ -->
+        <!-- ═══════════════════════════════════════════ -->
+
+        <mxCell id="a_ml_uc10" style="endArrow=none;html=1;strokeColor=#14b8a6;strokeWidth=2;" edge="1" source="actor_ml" target="uc10" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a_ml_uc11" style="endArrow=none;html=1;strokeColor=#14b8a6;strokeWidth=2;" edge="1" source="actor_ml" target="uc11" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a_ml_uc12" style="endArrow=none;html=1;strokeColor=#14b8a6;strokeWidth=2;" edge="1" source="actor_ml" target="uc12" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a_ml_uc13" style="endArrow=none;html=1;strokeColor=#14b8a6;strokeWidth=2;" edge="1" source="actor_ml" target="uc13" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a_ml_uc14" style="endArrow=none;html=1;strokeColor=#14b8a6;strokeWidth=2;" edge="1" source="actor_ml" target="uc14" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a_ml_uc7" style="endArrow=none;html=1;strokeColor=#14b8a6;strokeWidth=2;" edge="1" source="actor_ml" target="uc7" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a_ml_uc8" style="endArrow=none;html=1;strokeColor=#14b8a6;strokeWidth=2;" edge="1" source="actor_ml" target="uc8" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a_ml_uc9" style="endArrow=none;html=1;strokeColor=#14b8a6;strokeWidth=2;" edge="1" source="actor_ml" target="uc9" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- ═══════ ASSOCIATION LINES (Database) ═══════ -->
+        <!-- ═══════════════════════════════════════════ -->
+
+        <mxCell id="a_db_uc15" style="endArrow=none;html=1;strokeColor=#e11d48;strokeWidth=2;" edge="1" source="actor_db" target="uc15" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a_db_uc6" style="endArrow=none;html=1;strokeColor=#e11d48;strokeWidth=2;" edge="1" source="actor_db" target="uc6" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- ═══════ «include» RELATIONSHIPS ═══════ -->
+        <!-- ═══════════════════════════════════════════ -->
+
+        <!-- UC3 Predict → UC10 Preprocess -->
+        <mxCell id="inc_3_10" value="&lt;font color='#0D9488' style='font-size:10px'&gt;&lt;i&gt;«include»&lt;/i&gt;&lt;/font&gt;" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#0D9488;strokeWidth=1.5;dashPattern=6 3;labelBackgroundColor=none;" edge="1" source="uc3" target="uc10" parent="1">
+          <mxGeometry x="0.1" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- UC3 Predict → UC11 CNN-LSTM -->
+        <mxCell id="inc_3_11" value="&lt;font color='#0D9488' style='font-size:10px'&gt;&lt;i&gt;«include»&lt;/i&gt;&lt;/font&gt;" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#0D9488;strokeWidth=1.5;dashPattern=6 3;labelBackgroundColor=none;" edge="1" source="uc3" target="uc11" parent="1">
+          <mxGeometry x="0.1" y="-10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- UC3 Predict → UC15 Manage Records -->
+        <mxCell id="inc_3_15" value="&lt;font color='#0D9488' style='font-size:10px'&gt;&lt;i&gt;«include»&lt;/i&gt;&lt;/font&gt;" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#0D9488;strokeWidth=1.5;dashPattern=6 3;labelBackgroundColor=none;" edge="1" source="uc3" target="uc15" parent="1">
+          <mxGeometry x="0.5" y="15" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- UC4 XAI → UC12 Grad-CAM -->
+        <mxCell id="inc_4_12" value="&lt;font color='#0D9488' style='font-size:10px'&gt;&lt;i&gt;«include»&lt;/i&gt;&lt;/font&gt;" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#0D9488;strokeWidth=1.5;dashPattern=6 3;labelBackgroundColor=none;" edge="1" source="uc4" target="uc12" parent="1">
+          <mxGeometry x="0.2" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- UC4 XAI → UC13 SHAP -->
+        <mxCell id="inc_4_13" value="&lt;font color='#0D9488' style='font-size:10px'&gt;&lt;i&gt;«include»&lt;/i&gt;&lt;/font&gt;" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#0D9488;strokeWidth=1.5;dashPattern=6 3;labelBackgroundColor=none;" edge="1" source="uc4" target="uc13" parent="1">
+          <mxGeometry x="0.2" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- UC4 XAI → UC14 Attention -->
+        <mxCell id="inc_4_14" value="&lt;font color='#0D9488' style='font-size:10px'&gt;&lt;i&gt;«include»&lt;/i&gt;&lt;/font&gt;" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#0D9488;strokeWidth=1.5;dashPattern=6 3;labelBackgroundColor=none;" edge="1" source="uc4" target="uc14" parent="1">
+          <mxGeometry x="0.2" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- UC4 XAI → UC18 Agreement -->
+        <mxCell id="inc_4_18" value="&lt;font color='#0D9488' style='font-size:10px'&gt;&lt;i&gt;«include»&lt;/i&gt;&lt;/font&gt;" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#0D9488;strokeWidth=1.5;dashPattern=6 3;labelBackgroundColor=none;" edge="1" source="uc4" target="uc18" parent="1">
+          <mxGeometry x="0.2" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- UC5 PDF → UC16 Narrative -->
+        <mxCell id="inc_5_16" value="&lt;font color='#0D9488' style='font-size:10px'&gt;&lt;i&gt;«include»&lt;/i&gt;&lt;/font&gt;" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#0D9488;strokeWidth=1.5;dashPattern=6 3;labelBackgroundColor=none;" edge="1" source="uc5" target="uc16" parent="1">
+          <mxGeometry x="0.3" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- UC16 Narrative → UC17 Guidelines -->
+        <mxCell id="inc_16_17" value="&lt;font color='#0D9488' style='font-size:10px'&gt;&lt;i&gt;«include»&lt;/i&gt;&lt;/font&gt;" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#0D9488;strokeWidth=1.5;dashPattern=6 3;labelBackgroundColor=none;" edge="1" source="uc16" target="uc17" parent="1">
+          <mxGeometry x="0.3" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- UC6 Search → UC15 Manage Records -->
+        <mxCell id="inc_6_15" value="&lt;font color='#0D9488' style='font-size:10px'&gt;&lt;i&gt;«include»&lt;/i&gt;&lt;/font&gt;" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#0D9488;strokeWidth=1.5;dashPattern=6 3;labelBackgroundColor=none;" edge="1" source="uc6" target="uc15" parent="1">
+          <mxGeometry x="0.2" y="10" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -14,3 +14,7 @@
 * **Core Use Case Mapping:** Mapped out all primary use cases, including running exploratory data analysis (EDA), predicting heart disease risk, viewing explainability charts, downloading PDF diagnostic reports, and managing patient records.
 * **Complex Relationships:** Structured advanced `«include»` and `«extend»` UML relationships. For example, predicting heart disease *includes* preprocessing data and running the model, while viewing XAI explanations *extends* the core prediction flow.
 * **Diagram Generation:** Produced the final use case diagram to be included in the official project documentation.
+
+### 📎 Attachments
+* [Use Case Diagram (PDF)](../../diagrams/use_case_diagram.pdf)
+* [Use Case Diagram (.drawio)](../../diagrams/use_case_diagram.drawio)
