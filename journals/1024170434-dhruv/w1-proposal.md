@@ -14,3 +14,6 @@
   * **Database:** MySQL for patient records and history.
   * **Frontend Visualization:** Plotly.js for rendering interactive, real-time XAI dashboards.
 * **Risk Mitigation:** Documented operational constraints and identified potential risks (e.g., overfitting on the limited Cleveland dataset). Outlined strategies to deliver immediate value and fail fast through rapid iteration.
+
+### 📎 Attachments
+* [Project Proposal Folder](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/tree/master/project-proposal)
