@@ -1,6 +1,6 @@
 # 🚀 Week 2: UML Use Case Diagram & Actor Modeling
 
-**📅 Date:** August 15 – August 21, 2026  
+**📅 Date:** August 21 – August 27, 2026  
 **🎯 Core Task:** Designed the comprehensive UML Use Case Diagram mapping out all actor interactions and system boundaries for Cardio AI.
 
 ---
