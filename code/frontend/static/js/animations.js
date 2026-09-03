@@ -1,0 +1,1 @@
+// CardioAI Frontend Animations - Placeholder

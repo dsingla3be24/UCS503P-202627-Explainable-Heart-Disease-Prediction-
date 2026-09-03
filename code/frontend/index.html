@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardioAI XAI Console</title>
+
+    <!-- Local Bootstrap CSS -->
+    <link rel="stylesheet" href="./static/css/bootstrap.min.css">
+
+    <!-- Premium UI Styles -->
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/dashboard-custom.css">
+</head>
+
+<body>
+
+    <!-- 3D Vanta net background -->
+    <div id="vanta-canvas"></div>
+
+    <div class="container-fluid py-4 px-lg-5">
+        <!-- Premium Horizontal Console Header Card -->
+        <header class="glass-card p-4 mb-4 position-relative overflow-hidden"
+            style="border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), 0 0 15px rgba(56, 189, 248, 0.05);">
+            <!-- Subtle background grid effect inside header -->
+            <div
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.03; background-image: linear-gradient(rgba(56, 189, 248, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.3) 1px, transparent 1px); background-size: 12px 12px; pointer-events: none;">
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-4 position-relative"
+                style="z-index: 1;">
+                <div class="d-flex align-items-center gap-4 flex-grow-1">
+                    <div class="heart-container"
+                        style="width: 70px; height: 70px; min-width: 70px; min-height: 70px; border-radius: 50%; background: rgba(244, 63, 94, 0.04); border-color: rgba(244, 63, 94, 0.15);">
+                        <div class="beating-heart text-danger"
+                            style="font-size: 2.8rem; line-height: 70px; margin: 0; padding: 0;">&hearts;</div>
+                    </div>
+                    <div>
+                        <div class="d-flex align-items-center gap-2 mb-1">
+                            <span class="text-uppercase tracking-widest text-info fw-bold"
+                                style="font-size: 0.7rem; letter-spacing: 2px; text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);">[
+                                Clinical Diagnostic Core v2.4 ]</span>
+                            <span class="badge text-success border border-success px-2 py-0.5"
+                                style="font-size: 0.62rem; background: rgba(16, 185, 129, 0.08); box-shadow: 0 0 10px rgba(16, 185, 129, 0.25); letter-spacing: 0.5px; border-radius: 4px;">ONLINE</span>
+                        </div>
+                        <h1 class="m-0 fs-3 font-title fw-bold text-white tracking-wide"
+                            style="text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 15px rgba(56, 189, 248, 0.65), 0 0 30px rgba(56, 189, 248, 0.45), 0 0 40px rgba(56, 189, 248, 0.3);">
+                            CardioAI <span class="theme-color"
+                                style="text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 15px rgba(244, 63, 94, 0.65), 0 0 30px rgba(244, 63, 94, 0.45), 0 0 40px rgba(244, 63, 94, 0.3);">XAI
+                                Console</span>
+                        </h1>
+                        <p class="text-secondary m-0 fs-7 mt-1"
+                            style="max-width: 850px; font-weight: 400; line-height: 1.5;">
+                            Enter patient physiological parameters below. Then, execute the diagnosis pipeline to
+                            calculate risk factors, visual attributions, and clinical networks.
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex flex-column align-items-end gap-2 ms-auto text-end">
+                    <button class="btn btn-outline-info btn-sm rounded-pill px-3 mb-1 shadow-sm" data-bs-toggle="modal"
+                        data-bs-target="#searchModal"
+                        style="border-color: rgba(56, 189, 248, 0.4); background: rgba(15, 23, 42, 0.6);">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-1">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        Patient Search
+                    </button>
+                    <div class="d-flex align-items-center gap-2 text-secondary"
+                        style="font-size: 0.68rem; font-family: monospace; letter-spacing: 0.5px;">
+                        <span>SYS_SECURE: ACTIVE</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 text-secondary"
+                        style="font-size: 0.68rem; font-family: monospace; letter-spacing: 0.5px;">
+                        <span>HOST: 127.0.0.1:5000</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="row g-4">
+            <!-- Full width control panel -->
+            <div class="col-12" id="control-panel-column">
+                <div class="glass-card p-4 position-relative overflow-hidden" id="parameter-card">
+                    <!-- Scanner Laser Overlay -->
+                    <div class="scanner-bar" id="scanner-laser"></div>
+
+                    <div class="mb-3">
+                        <h2 class="section-header m-0 border-0 p-0 theme-color">Parameters Control</h2>
+                    </div>
+
+
+
+                    <form id="diagnosis-form">
+                        <div class="row g-4">
+                            <!-- Column 1: Profile & Symptoms -->
+                            <div class="col-lg-4 col-md-12 d-flex flex-column gap-4">
+                                <!-- Demographics Card -->
+                                <div class="card bg-transparent border-0 p-3 glass-card flex-grow-1">
+                                    <div class="section-header border-0 pb-0 mb-3 d-flex align-items-center">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" class="theme-color me-2">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                            <circle cx="12" cy="7" r="4" />
+                                        </svg>
+                                        <span>Demographics</span>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <div class="btn-group w-100 mb-3" role="group" aria-label="Patient Type Toggle">
+                                                <input type="radio" class="btn-check" name="patient_type" id="type_new" value="new" autocomplete="off" checked onchange="document.getElementById('patient_id_container').style.display='none'; enableDemographics();">
+                                                <label class="btn btn-outline-info btn-sm" for="type_new">New Patient</label>
+                                                
+                                                <input type="radio" class="btn-check" name="patient_type" id="type_existing" value="existing" autocomplete="off" onchange="document.getElementById('patient_id_container').style.display='block'; disableDemographics();">
+                                                <label class="btn btn-outline-info btn-sm" for="type_existing">Existing Patient</label>
+                                            </div>
+
+                                            <label class="form-label" for="patient_name">Patient Name <span
+                                                    class="help-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Name of the patient for the generated report.">?</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-dark border-secondary text-info"><svg
+                                                        width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                                        <circle cx="12" cy="7" r="4"></circle>
+                                                    </svg></span>
+                                                <input type="text" class="form-control border-start-0 ps-1"
+                                                    id="patient_name" name="patient_name" placeholder="e.g. John Doe" list="patient_name_list">
+                                                <datalist id="patient_name_list"></datalist>
+                                            </div>
+
+                                            <div id="patient_id_container" class="mt-3" style="display: none;">
+                                                <label class="form-label" for="patient_id">Patient ID <span class="help-icon"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Enter existing Patient ID to append records to the same patient.">?</span></label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text bg-dark border-secondary text-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
+                                                    <input type="text" class="form-control border-start-0 ps-1" id="patient_id" name="patient_id" placeholder="e.g. PT-1A2B3C" list="patient_id_list">
+                                                    <datalist id="patient_id_list"></datalist>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="demographics-age-sex">
+                                            <div class="col-12 mt-3">
+                                                <label class="form-label d-flex justify-content-between align-items-center">
+                                                    <span>Age <span class="help-icon" data-bs-toggle="tooltip"
+                                                            data-bs-placement="top"
+                                                            title="Age of the patient. Evaluates vascular stiffness and cardiac reserve thresholds.">?</span></span>
+                                                    <input type="number" id="val-age"
+                                                        class="glowing-badge warning text-center border-0" value="50"
+                                                        style="width: 60px; outline: none;">
+                                                </label>
+                                                <input type="range" class="form-range" id="age" name="age" min="29" max="77"
+                                                    value="50">
+                                                <div class="fs-8 text-secondary mt-1 d-flex justify-content-between">
+                                                    <span>Range: 29-77 yrs</span>
+                                                    <span id="age-ref" class="text-success">&bull; Middle-Age</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <label class="form-label" for="sex">Gender <span class="help-icon"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Biological sex. Evaluates baseline statistical cardiovascular risks.">?</span></label>
+                                                <select class="form-select" id="sex" name="sex">
+                                                    <option value="0">Male</option>
+                                                    <option value="1">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Clinical Symptoms Card -->
+                                <div class="card bg-transparent border-0 p-3 glass-card flex-grow-1">
+                                    <div class="section-header border-0 pb-0 mb-3 d-flex align-items-center">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" class="theme-color me-2">
+                                            <path
+                                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                        </svg>
+                                        <span>Clinical Symptoms</span>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label class="form-label" for="cp">Chest Pain Type <span class="help-icon"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Angina characteristics: Typical Angina, Atypical Angina, Non-anginal pain, or Asymptomatic.">?</span></label>
+                                            <select class="form-select" id="cp" name="cp">
+                                                <option value="1">Typical Angina</option>
+                                                <option value="2">Atypical Angina</option>
+                                                <option value="3">Non-anginal Pain</option>
+                                                <option value="4" selected>Asymptomatic</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label" for="exang">Exercise Induced Angina <span
+                                                    class="help-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Indicates whether physical exertion induces active coronary muscle ischemia or pain.">?</span></label>
+                                            <select class="form-select" id="exang" name="exang">
+                                                <option value="0">No</option>
+                                                <option value="1">Yes</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label" for="fbs">Fasting Blood Sugar <span
+                                                    class="help-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Impaired fasting glucose test. Values > 120 mg/dl are risk warning markers.">?</span></label>
+                                            <select class="form-select" id="fbs" name="fbs">
+                                                <option value="0">Normal (&le;120 mg/dl)</option>
+                                                <option value="1">Elevated (&gt;120 mg/dl)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Column 2: Vitals & ECG -->
+                            <div class="col-lg-4 col-md-12 d-flex">
+                                <!-- Cardiac Diagnostics Card -->
+                                <div
+                                    class="card bg-transparent border-0 p-3 glass-card w-100 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <div class="section-header border-0 pb-0 mb-3 d-flex align-items-center">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2.5" class="theme-color me-2">
+                                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                                            </svg>
+                                            <span>Cardiac Diagnostics</span>
+                                        </div>
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <label
+                                                    class="form-label d-flex justify-content-between align-items-center">
+                                                    <span>Resting BP (mmHg) <span class="help-icon"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Resting Blood Pressure. High values indicate chronic cardiovascular strain.">?</span></span>
+                                                    <input type="number" id="val-trestbps"
+                                                        class="glowing-badge warning text-center border-0" value="130"
+                                                        style="width: 60px; outline: none;">
+                                                </label>
+                                                <input type="range" class="form-range" id="trestbps" name="trestbps"
+                                                    min="94" max="200" value="130">
+                                                <div class="fs-8 text-secondary mt-1 d-flex justify-content-between">
+                                                    <span>Normal: &le;120 mmHg</span>
+                                                    <span id="bp-ref" class="text-warning">&bull; Prehypertension</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label
+                                                    class="form-label d-flex justify-content-between align-items-center">
+                                                    <span>Cholesterol (mg/dl) <span class="help-icon"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Serum cholesterol. Elevates plaque deposit / atherosclerosis risks.">?</span></span>
+                                                    <input type="number" id="val-chol"
+                                                        class="glowing-badge danger text-center border-0" value="240"
+                                                        style="width: 60px; outline: none;">
+                                                </label>
+                                                <input type="range" class="form-range" id="chol" name="chol" min="126"
+                                                    max="564" value="240">
+                                                <div class="fs-8 text-secondary mt-1 d-flex justify-content-between">
+                                                    <span>Normal: &lt;200 mg/dl</span>
+                                                    <span id="chol-ref" class="text-danger">&bull; High Risk</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label" for="restecg">Resting ECG <span
+                                                        class="help-icon" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top"
+                                                        title="Resting electrocardiographic results. Highlights baseline electrical abnormalities.">?</span></label>
+                                                <select class="form-select" id="restecg" name="restecg">
+                                                    <option value="0">Normal</option>
+                                                    <option value="1">ST-T Wave Abnormality</option>
+                                                    <option value="2">Left Ventricular Hypertrophy</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12">
+                                                <label
+                                                    class="form-label d-flex justify-content-between align-items-center">
+                                                    <span>Max Heart Rate <span class="help-icon"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Max heart rate achieved during stress test. Lower rates suggest decreased output response.">?</span></span>
+                                                    <input type="number" id="val-thalach"
+                                                        class="glowing-badge normal text-center border-0" value="150"
+                                                        style="width: 60px; outline: none;">
+                                                </label>
+                                                <input type="range" class="form-range" id="thalach" name="thalach"
+                                                    min="71" max="202" value="150">
+                                                <div class="fs-8 text-secondary mt-1 d-flex justify-content-between">
+                                                    <span>Range: 71-202 bpm</span>
+                                                    <span id="hr-ref" class="text-success">&bull; Adequate</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Column 3: ECG Waveform & Imaging -->
+                            <div class="col-lg-4 col-md-12 d-flex flex-column gap-4">
+                                <!-- ECG Waveform Card -->
+                                <div class="card bg-transparent border-0 p-3 glass-card flex-grow-1">
+                                    <div class="section-header border-0 pb-0 mb-3 d-flex align-items-center">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" class="theme-color me-2">
+                                            <path d="M2 12h20M12 2v20" />
+                                        </svg>
+                                        <span>ECG Waveform</span>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label class="form-label d-flex justify-content-between align-items-center">
+                                                <span>ST Depr (oldpeak) <span class="help-icon" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top"
+                                                        title="ST segment depression relative to baseline. Key subendocardial ischemia indicator.">?</span></span>
+                                                <input type="number" step="0.1" id="val-oldpeak"
+                                                    class="glowing-badge warning text-center border-0" value="1.0"
+                                                    style="width: 60px; outline: none;">
+                                            </label>
+                                            <input type="range" class="form-range" id="oldpeak" name="oldpeak" min="0.0"
+                                                max="6.2" step="0.1" value="1.0">
+                                            <div class="fs-8 text-secondary mt-1 d-flex justify-content-between">
+                                                <span>Normal: 0.0</span>
+                                                <span id="oldpeak-ref" class="text-warning">&bull; Mild
+                                                    Depression</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label" for="slope">ST Slope <span class="help-icon"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="ST segment peak exercise slope. Flat or downsloping represents arterial stenoses.">?</span></label>
+                                            <select class="form-select" id="slope" name="slope">
+                                                <option value="1">Upsloping</option>
+                                                <option value="2" selected>Flat</option>
+                                                <option value="3">Downsloping</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Advanced Imaging Card -->
+                                <div class="card bg-transparent border-0 p-3 glass-card flex-grow-1">
+                                    <div class="section-header border-0 pb-0 mb-3 d-flex align-items-center">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" class="theme-color me-2">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="M12 2v20M2 12h20" />
+                                        </svg>
+                                        <span>Imaging & Vessels</span>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label class="form-label" for="ca">Vessels Blocked (ca) <span
+                                                    class="help-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Number of major vessels (0-3) colored by fluoroscopy. Higher counts indicate severe stenosis.">?</span></label>
+                                            <select class="form-select" id="ca" name="ca">
+                                                <option value="0">0 vessels</option>
+                                                <option value="1">1 vessel</option>
+                                                <option value="2">2 vessels</option>
+                                                <option value="3">3 vessels</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label" for="thal">Thalassemia (thal) <span
+                                                    class="help-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Blood flow defects: Normal, Fixed scar tissue, or Reversible active ischemia.">?</span></label>
+                                            <select class="form-select" id="thal" name="thal">
+                                                <option value="3">Normal</option>
+                                                <option value="6">Fixed Defect</option>
+                                                <option value="7">Reversible Defect</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Diagnosis Run Button & Status -->
+                        <div class="w-100 d-flex align-items-center justify-content-between mt-4 flex-wrap gap-3">
+                            <div class="d-none d-md-block" style="width: 150px;"></div>
+                            <!-- spacer to balance left side -->
+                            <button type="submit" class="btn btn-lg btn-glow-rose px-5 py-3"
+                                style="font-size: 1.05rem; font-weight: 700; letter-spacing: 1px;" id="btn-diagnose">
+                                RUN CARDIAC DIAGNOSIS
+                            </button>
+                            <div style="min-width: 150px;" class="text-end ms-auto ms-md-0">
+                                <div id="connection-status" class="status-badge success d-inline-block"
+                                    style="font-size: 0.68rem; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.8px; box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);">
+                                    Backend Connected
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right panel: Dashboard results (initially hidden and full width) -->
+            <div class="col-12 d-none" id="results-column">
+                <section id="results-dashboard" class="d-none row g-4 pb-4 px-2" style="width: 100%;">
+                    <div class="col-12 d-flex flex-column gap-4">
+                    <!-- Diagnosis Panel -->
+                    <div class="glass-card p-4 mb-4 fade-in-up delay-1">
+                        <div class="row align-items-center g-3">
+                            <div
+                                class="col-md-3 d-flex flex-column align-items-center border-end border-secondary-subtle py-2">
+                                <div class="heart-container mb-2">
+                                    <div class="beating-heart text-danger" id="display-heart">&hearts;</div>
+                                </div>
+                                <span class="status-badge" id="display-status-badge">HIGH RISK</span>
+                            </div>
+                            <div class="col-md-9 px-4">
+                                <h3 class="font-title m-0 mb-1">Cardiac Risk Analysis <span id="display-patient-name"
+                                        class="fs-6 text-info ms-2 fw-normal"></span><span id="display-patient-id"
+                                        class="patient-id-badge"
+                                        style="background: rgba(56, 189, 248, 0.15); color: var(--neon-blue); padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin-left: 10px; font-family: monospace;"></span>
+                                </h3>
+                                <p class="text-secondary m-0 mb-3 fs-7" id="display-risk-msg">Based on explainable
+                                    neural network consensus model.</p>
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="fw-bold">Probability:</span>
+                                    <span class="fs-4 fw-bold theme-color" id="display-probability">78.5%</span>
+                                </div>
+                                <div class="progress bg-dark-subtle" style="height: 8px; border-radius: 4px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
+                                        role="progressbar" style="width: 78.5%;" id="display-progress-bar"></div>
+                                </div>
+                                <div class="d-flex justify-content-between fs-8 text-secondary mt-1">
+                                    <span id="display-ground-truth" class="text-warning">Ground Truth: Disease</span>
+                                    <span>Threshold: 50%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Model Performance Metrics Card -->
+                    <div class="glass-card p-4 mb-4 fade-in-up delay-1">
+                        <h4 class="text-info fs-6 mt-1 mb-3 font-title tracking-wider text-uppercase d-flex align-items-center"
+                            style="font-size: 0.9rem !important;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" class="me-2 text-info">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                            </svg>
+                            <span id="metrics-title">Model Performance Metrics</span>
+                        </h4>
+                        <div class="row row-cols-2 row-cols-md-5 g-3 text-center">
+                            <div class="col">
+                                <div class="border border-secondary-subtle rounded p-2"
+                                    style="background: rgba(255,255,255,0.02); border-radius: 10px !important; border-color: rgba(255,255,255,0.08) !important;">
+                                    <div class="text-secondary fs-8 text-uppercase tracking-wider"
+                                        style="font-size: 0.65rem;">Accuracy</div>
+                                    <div class="fs-5 fw-bold theme-color" id="metric-accuracy">--</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="border border-secondary-subtle rounded p-2"
+                                    style="background: rgba(255,255,255,0.02); border-radius: 10px !important; border-color: rgba(255,255,255,0.08) !important;">
+                                    <div class="text-secondary fs-8 text-uppercase tracking-wider"
+                                        style="font-size: 0.65rem;">Precision</div>
+                                    <div class="fs-5 fw-bold theme-color" id="metric-precision">--</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="border border-secondary-subtle rounded p-2"
+                                    style="background: rgba(255,255,255,0.02); border-radius: 10px !important; border-color: rgba(255,255,255,0.08) !important;">
+                                    <div class="text-secondary fs-8 text-uppercase tracking-wider"
+                                        style="font-size: 0.65rem;">Recall</div>
+                                    <div class="fs-5 fw-bold theme-color" id="metric-recall">--</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="border border-secondary-subtle rounded p-2"
+                                    style="background: rgba(255,255,255,0.02); border-radius: 10px !important; border-color: rgba(255,255,255,0.08) !important;">
+                                    <div class="text-secondary fs-8 text-uppercase tracking-wider"
+                                        style="font-size: 0.65rem;">F1-Score</div>
+                                    <div class="fs-5 fw-bold theme-color" id="metric-f1">--</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="border border-secondary-subtle rounded p-2"
+                                    style="background: rgba(255,255,255,0.02); border-radius: 10px !important; border-color: rgba(255,255,255,0.08) !important;">
+                                    <div class="text-secondary fs-8 text-uppercase tracking-wider"
+                                        style="font-size: 0.65rem;">ROC-AUC</div>
+                                    <div class="fs-5 fw-bold theme-color" id="metric-auc">--</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+
+                    <div class="col-12 d-flex flex-column gap-4">
+                        <!-- Visual Analytics (XAI) -->
+                        <div class="glass-card p-4 fade-in-up delay-2 w-100 h-100 flex-grow-1">
+                                    <h4 class="text-info fs-6 mt-1 mb-3 font-title tracking-wider text-uppercase d-flex align-items-center">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="me-2 text-info">
+                                            <path d="M3 3v18h18"/>
+                                            <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+                                        </svg>
+                                        XAI Consensus Profile
+                                    </h4>
+                                    <p class="text-secondary fs-7 mb-3">Attribution comparison (Global Attention, Local Grad-CAM, and Patient SHAP weights).</p>
+                                    <div id="plotly-bar-chart" style="width: 100%; height: 385px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 d-flex flex-column gap-4">
+                        <div class="glass-card p-4 fade-in-up delay-2 w-100 h-100 flex-grow-1">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h4 class="text-info fs-6 mt-1 mb-0 font-title tracking-wider text-uppercase d-flex align-items-center">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="me-2 text-info">
+                                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                                <path d="M3 9h18M9 21V9"/>
+                                            </svg>
+                                            2D Grad-CAM Heatmap
+                                        </h4>
+                                        <select id="gradcam-feature-select" class="form-select form-select-sm" style="width: auto; background-color: rgba(15, 23, 42, 0.8); color: var(--text-primary); border-color: rgba(56, 189, 248, 0.3);">
+                                            <option value="ALL">Show all interactions</option>
+                                        </select>
+                                    </div>
+                                    <div id="plotly-gradcam-heatmap" style="width: 100%; height: 385px;"></div>
+                        </div>
+                    </div>
+
+                        <div class="col-12 d-flex flex-column gap-4">
+                        <!-- Clinical Report & Download PDF -->
+                        <div class="glass-card p-4 fade-in-up delay-4 w-100 h-100 flex-grow-1">
+                            <div
+                                class="d-flex align-items-center justify-content-between mb-3 border-bottom border-secondary-subtle pb-2">
+                                <h3 class="font-title m-0 fs-5 text-info">Clinical Diagnosis Report</h3>
+                                <a href="#" class="btn btn-glow-cyan px-4 py-2 text-decoration-none"
+                                    id="btn-download-pdf" target="_blank">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.5" class="me-1">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                                    </svg>
+                                    Download Doctor PDF Report
+                                </a>
+                            </div>
+
+                            <!-- AI Patient Narrative Summary Card -->
+                            <div class="card bg-transparent border-0 mb-4 p-3 glass-card" id="narrative-summary-card"
+                                style="border-left: 4px solid var(--neon-blue) !important; background: rgba(56, 189, 248, 0.03) !important; display: none;">
+                                <div class="section-header border-0 pb-0 mb-2 d-flex align-items-center"
+                                    style="font-size: 0.95rem;">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" class="theme-color me-2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <polyline points="14 2 14 8 20 8" />
+                                        <line x1="16" y1="13" x2="8" y2="13" />
+                                        <line x1="16" y1="17" x2="8" y2="17" />
+                                        <polyline points="10 9 9 9 8 9" />
+                                    </svg>
+                                    <span>AI Patient Narrative Summary</span>
+                                </div>
+                                <ul class="m-0 fs-7 text-secondary" id="display-narrative"
+                                    style="line-height: 1.65; font-style: italic; min-height: 24px; padding-left: 20px;">
+                                </ul>
+                            </div>
+
+                            <!-- Reorganized 2-Column Clinical Dashboard Grid -->
+                            <div class="row g-4" id="clinical-report-columns">
+                                <div class="col-xl-6 col-12">
+                                    <h4
+                                        class="text-info fs-6 mt-1 mb-3 font-title tracking-wider text-uppercase d-flex align-items-center">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" class="me-2">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                        </svg>
+                                        Primary Diagnosis Drivers
+                                    </h4>
+                                    <div class="report-grid-column d-flex flex-column gap-3"
+                                        id="display-primary-drivers">
+                                        <!-- Populated in JS -->
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-12">
+                                    <h4
+                                        class="text-secondary fs-6 mt-1 mb-3 font-title tracking-wider text-uppercase d-flex align-items-center">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" class="me-2">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <line x1="12" y1="16" x2="12" y2="12" />
+                                            <line x1="12" y1="8" x2="12.01" y2="8" />
+                                        </svg>
+                                        Secondary Clinical Observations
+                                    </h4>
+                                    <div class="report-grid-column d-flex flex-column gap-3"
+                                        id="display-secondary-anomalies">
+                                        <!-- Populated in JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reset & Test Another Patient Button -->
+                        <div class="d-flex justify-content-center mt-5 mb-3 fade-in-up delay-4">
+                            <button type="button"
+                                class="btn btn-lg btn-glow-cyan px-5 py-3 fs-6 d-flex align-items-center"
+                                id="btn-reset-pipeline" style="letter-spacing: 1px; font-weight: 700;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" class="me-2 animate-spin-hover">
+                                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+                                </svg>
+                                TEST ANOTHER PATIENT
+                            </button>
+                        </div>
+                </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Robotic Scanning State Container (Overlay) -->
+    <div class="d-none text-center animate-overlay" id="results-scanner">
+        <div class="scanning-beam"></div>
+        <div class="scanlines"></div>
+        <!-- Data stream background -->
+        <div class="data-stream-bg" id="data-stream-container">
+            <!-- Populated via JS -->
+        </div>
+
+        <div class="scanner-radar-container mb-3" style="position: relative;">
+            <div class="ripple-effect" style="animation-delay: 0s;"></div>
+            <div class="ripple-effect" style="animation-delay: 0.5s;"></div>
+            <div class="ripple-effect" style="animation-delay: 1.0s;"></div>
+            <div class="radar-circle radar-outer"></div>
+            <div class="radar-circle radar-middle"></div>
+            <div class="radar-circle radar-inner"></div>
+            <div class="radar-sweep"></div>
+            <div class="radar-target-heart">&hearts;</div>
+        </div>
+
+        <h4 class="font-title theme-color mb-2 uppercase tracking-widest glitch-text"
+            data-text="AI DIAGNOSTIC SCAN ACTIVE" style="font-size: 1.2rem; letter-spacing: 3px;">AI DIAGNOSTIC SCAN
+            ACTIVE</h4>
+
+        <!-- ECG Heartbeat SVG sinus drawing animation -->
+        <div class="ecg-container mb-3">
+            <svg width="300" height="50" viewBox="0 0 300 50" fill="none" class="mx-auto">
+                <path class="ecg-line"
+                    d="M0 25 L80 25 L86 18 L92 32 L98 25 L130 25 L136 5 L144 45 L152 25 L180 25 L186 18 L192 32 L198 25 L300 25"
+                    stroke="var(--neon-blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+
+        <!-- Scanning progress bar -->
+        <div class="mb-4">
+            <div class="progress mx-auto"
+                style="width: 320px; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; border: 1px solid rgba(255,255,255,0.05);">
+                <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" id="scanner-progress-bar"
+                    role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="text-secondary mt-1 fs-8 text-uppercase tracking-wider" id="scanner-progress-text"
+                style="font-size: 0.7rem; font-weight: 600;">System Initializing... (0%)</div>
+        </div>
+
+        <div class="scanning-terminal mx-auto p-3 text-start">
+            <div class="terminal-line theme-color" id="term-line-1"></div>
+            <div class="terminal-line theme-color" id="term-line-2"></div>
+            <div class="terminal-line theme-color" id="term-line-3"></div>
+            <div class="terminal-line theme-color" id="term-line-4"></div>
+            <div class="terminal-line theme-color" id="term-line-5"></div>
+        </div>
+    </div>
+
+    <!-- Client-side script libraries (Locally Hosted) -->
+    <!-- Patient Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content glass-card"
+                style="background: rgba(10, 15, 30, 0.95); border-color: rgba(56, 189, 248, 0.3);">
+                <div class="modal-header border-bottom border-secondary">
+                    <h5 class="modal-title font-title text-info" id="searchModalLabel">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" class="me-2 mb-1">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        Patient History Lookup
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="input-group mb-4">
+                        <input type="text" id="patientSearchInput"
+                            class="form-control bg-dark border-secondary text-white"
+                            placeholder="Search by patient name or ID (e.g. John Doe, PT-1A2B3C)...">
+                        <button class="btn btn-info" type="button" id="btnSearchPatient">Search</button>
+                    </div>
+                    <div id="searchResults" class="d-flex flex-column gap-3">
+                        <div class="text-center py-5 text-secondary">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1" class="mb-3 opacity-50">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="9" y1="21" x2="9" y2="9"></line>
+                            </svg>
+                            <p>Enter a name to retrieve clinical history.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./static/js/bootstrap.bundle.min.js"></script>
+    <script src="./static/js/three.min.js"></script>
+    <script src="./static/js/vanta.net.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="./static/js/animations.js"></script>
+    <script src="./static/js/lottie-player.js"></script>
+
+    <script src="./static/js/dashboard-main.js"></script>
+</body>
+
+</html>
