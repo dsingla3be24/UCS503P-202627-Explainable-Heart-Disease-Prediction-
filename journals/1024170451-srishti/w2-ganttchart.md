@@ -1,6 +1,6 @@
 # 🚀 Week 2: Project Scheduling & Gantt Chart
 
-**📅 Date:** August 15 – August 21, 2026  
+**📅 Date:** August 21 – August 27, 2026  
 **🎯 Core Task:** Designed the comprehensive Gantt chart outlining the project timeline, milestones, and task dependencies for the development of Cardio AI.
 
 ---
