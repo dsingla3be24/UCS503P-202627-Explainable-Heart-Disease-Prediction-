@@ -12,7 +12,7 @@
   * Ensured logical consistency by mapping out all prerequisites, constraints, and data validation steps.
 
 * **Swimlane Architecture:** 
-  * Structured the UML Activity Diagram (`activity_diagram_6_complete_system_swimlanes.drawio`) using a 4-swimlane methodology to clearly define responsibilities across:
+  * Structured the UML Activity Diagram using a 4-swimlane methodology to clearly define responsibilities across:
     1. **User / Clinician (Frontend)**
     2. **Flask Web Server (Middleware)**
     3. **ML Prediction Engine (Backend)**
@@ -23,7 +23,7 @@
   * Designed Parallel Processing flows (Fork/Join nodes) to demonstrate how Explainable AI models (SHAP, Grad-CAM, and Global Attention) compute feature attributions simultaneously after the primary CNN-LSTM inference.
 
 * **Documentation & Rendering:** 
-  * Compiled the final master diagrams (`activity diagram swimlanes.pdf` and `activity_diagram.pdf`) to serve as the official blueprint for the backend engineering phase.
+  * Compiled the final master diagrams to serve as the official blueprint for the backend engineering phase.
 
 ### 📎 Attachments
 * [Activity Diagram - Swimlanes (PDF)](../../diagrams/activity diagram swimlanes.pdf)
