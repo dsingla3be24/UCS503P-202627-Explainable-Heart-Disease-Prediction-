@@ -27,6 +27,4 @@
 
 ### 📎 Attachments
 * [Activity Diagram - Swimlanes (PDF)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/blob/master/diagrams/activity%20diagram%20swimlanes.pdf)
-* [Activity Diagram - Swimlanes (Drawio)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/blob/master/diagrams/activity%20diagram%20swimlanes.drawio)
 * [Activity Diagram - Standard (PDF)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/blob/master/diagrams/activity%20diagram_.pdf)
-* [Activity Diagram - Standard (Drawio)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/blob/master/diagrams/activity%20diagram_.drawio)
