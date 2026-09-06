@@ -27,4 +27,6 @@
 
 ### 📎 Attachments
 * [Activity Diagram - Swimlanes (PDF)](../../diagrams/activity diagram swimlanes.pdf)
+* [Activity Diagram - Swimlanes (Drawio)](../../diagrams/activity diagram swimlanes.drawio)
 * [Activity Diagram - Standard (PDF)](../../diagrams/activity diagram_.pdf)
+* [Activity Diagram - Standard (Drawio)](../../diagrams/activity diagram_.drawio)
