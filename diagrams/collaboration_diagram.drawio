@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-09-11T00:00:00.000Z" agent="Mozilla/5.0" version="21.1.2" type="device">
+  <diagram id="collab_diag" name="Collaboration Diagram">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Collaboration Diagram&lt;br&gt;CardioAI – Heart Disease Prediction" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="300" y="10" width="500" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Objects (Nodes) -->
+        <mxCell id="actor_clinician" value="Clinician" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="100" y="400" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="obj_frontend" value="&lt;u&gt;:Frontend WebApp&lt;/u&gt;" style="html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="300" y="410" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="obj_flask" value="&lt;u&gt;:Flask Server&lt;/u&gt;" style="html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="600" y="410" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="obj_xai" value="&lt;u&gt;:XAI Module&lt;/u&gt;" style="html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="600" y="150" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="actor_db" value="Database" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="940" y="400" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Links (Edges) -->
+        <mxCell id="link1" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="actor_clinician" target="obj_frontend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="link2" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="obj_frontend" target="obj_flask">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="link3" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="obj_flask" target="actor_db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="link4" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="obj_flask" target="obj_xai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Self loops -->
+        <mxCell id="loop_flask" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="470" as="sourcePoint" />
+            <mxPoint x="700" y="470" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="640" y="520" />
+              <mxPoint x="700" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="loop_xai" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="150" as="sourcePoint" />
+            <mxPoint x="700" y="150" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="640" y="100" />
+              <mxPoint x="700" y="100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message Texts -->
+        <!-- Link 1: Clinician <-> Frontend -->
+        <mxCell id="msg1" value="&lt;font color=&quot;#FF0000&quot;&gt;1: enter patient data →&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=bottom;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="400" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msg13" value="&lt;font color=&quot;#800080&quot;&gt;← 13: display results &amp;amp; charts&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="450" width="160" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Link 2: Frontend <-> Flask -->
+        <mxCell id="msg2" value="&lt;font color=&quot;#FF0000&quot;&gt;2: POST /predict JSON →&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=bottom;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="400" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msg12" value="&lt;font color=&quot;#800080&quot;&gt;← 12: return JSON &amp;amp; PDF&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="450" width="160" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Link 3: Flask <-> Database -->
+        <mxCell id="msg3_9" value="&lt;font color=&quot;#FF0000&quot;&gt;3: deduplicate &amp;amp; fetch demographics →&lt;br&gt;9: save diagnosis to DB →&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=bottom;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="380" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="msg4_10" value="&lt;font color=&quot;#800080&quot;&gt;← 4: return demographics&lt;br&gt;← 10: acknowledgment&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="450" width="240" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Link 4: Flask <-> XAI -->
+        <mxCell id="msg6" value="&lt;font color=&quot;#FF0000&quot;&gt;6: trigger XAI analysis ↑&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="280" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msg8" value="&lt;font color=&quot;#800080&quot;&gt;↓ 8: return XAI metrics&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="320" width="180" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Self Loop Messages -->
+        <mxCell id="msg5_11" value="&lt;font color=&quot;#FF0000&quot;&gt;5: preprocess &amp;amp; predict risk ↻&lt;br&gt;11: generate PDF report ↻&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="530" width="220" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="msg7" value="&lt;font color=&quot;#FF0000&quot;&gt;7: compute Grad-CAM, SHAP ↻&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=bottom;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="60" width="220" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
