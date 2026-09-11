@@ -1,6 +1,6 @@
 # 🚀 Week 4: Interaction Modeling & Dynamic System Behavior
 
-**📅 Date:** August 28 – September 4, 2026  
+**📅 Date:** September 4 – September 10, 2026  
 **🎯 Core Task:** Architected and documented the dynamic behavioral models of the CardioAI system by designing the UML Sequence and Collaboration diagrams.
 
 ---
