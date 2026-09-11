@@ -14,7 +14,9 @@
 * **Core Use Case Mapping:** Mapped out all primary use cases, including running exploratory data analysis (EDA), predicting heart disease risk, viewing explainability charts, downloading PDF diagnostic reports, and managing patient records.
 * **Complex Relationships:** Structured advanced `«include»` and `«extend»` UML relationships. For example, predicting heart disease *includes* preprocessing data and running the model, while viewing XAI explanations *extends* the core prediction flow.
 * **Diagram Generation:** Produced the final use case diagram to be included in the official project documentation.
+* **Detailed Use Case Templates:** Developed detailed step-by-step documentation for 18 core use cases (UC_01 to UC_18), outlining the primary flow, preconditions, and postconditions for activities such as risk prediction, EDA, XAI computation, and generating clinical reports.
 
 ### 📎 Attachments
-* [Use Case Diagram (PDF)](../../diagrams/use_case_diagram.pdf)
-* [Use Case Diagram (.drawio)](../../diagrams/use_case_diagram.drawio)
+* [Use Case Diagram (PDF)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/tree/master/diagrams/use_case_diagram.pdf)
+* [Use Case Diagram (.drawio)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/tree/master/diagrams/use_case_diagram.drawio)
+* [Use Case Templates Folder](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/tree/master/diagrams/use_case_templates)
