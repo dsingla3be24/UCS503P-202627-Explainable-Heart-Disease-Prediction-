@@ -17,6 +17,6 @@
 * **Detailed Use Case Templates:** Developed detailed step-by-step documentation for 18 core use cases (UC_01 to UC_18), outlining the primary flow, preconditions, and postconditions for activities such as risk prediction, EDA, XAI computation, and generating clinical reports.
 
 ### 📎 Attachments
-* [Use Case Diagram (PDF)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/tree/master/diagrams/use_case_diagram.pdf)
+* [Use Case Diagram (PDF)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/tree/master/diagrams/use%20case%20diagram.pdf)
 * [Use Case Diagram (.drawio)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/tree/master/diagrams/use_case_diagram.drawio)
 * [Use Case Templates Folder](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/tree/master/diagrams/use_case_templates)
