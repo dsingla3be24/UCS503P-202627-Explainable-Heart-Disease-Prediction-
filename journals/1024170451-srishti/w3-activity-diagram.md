@@ -26,5 +26,7 @@
   * Compiled the final master diagrams to serve as the official blueprint for the backend engineering phase.
 
 ### 📎 Attachments
-* [Activity Diagram - Swimlanes (PDF)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/blob/master/diagrams/activity%20diagram%20swimlanes.pdf)
-* [Activity Diagram - Standard (PDF)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/blob/master/diagrams/activity%20diagram_.pdf)
+* [Activity Diagram - Standard (PDF)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/blob/master/diagrams/activity%20diagram.pdf)
+* [Activity Diagram - Standard (Draw.io)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/blob/master/diagrams/activity%20diagram.drawio)
+* [Activity Diagram - Swimlanes (PDF)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/blob/master/diagrams/activity%20diagram_swimalnes.pdf)
+* [Activity Diagram - Swimlanes (Draw.io)](https://github.com/dsingla3be24/UCS503P-202627-Explainable-Heart-Disease-Prediction-/blob/master/diagrams/Activity_Diagram_Swimlanes.drawio)
