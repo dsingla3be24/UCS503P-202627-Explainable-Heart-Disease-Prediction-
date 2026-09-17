@@ -55,3 +55,7 @@ Cardiovascular disease remains the leading cause of mortality globally. While de
 | :--- | :--- |
 | **Dhruv Singla** | 1024170434 |
 | **Srishti** | 1024170451 |
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
