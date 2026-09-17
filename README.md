@@ -1,45 +1,49 @@
-# UCS503P Project Template
+# Cardio AI: Explainable Heart Disease Prediction 🫀🤖
 
-This is a project template for UCS503P Project (2026-27
-ODD). 
+> **Using CNN-LSTM Attention Network with Grad-CAM Interpretability**
+>
+> *Software Engineering Project (UCS503P) - Thapar Institute of Engineering and Technology*
 
-There are 3 reports in LaTeX format, namely *a*)
-Project Proposal, *b*) Project Report Prototype Stage,
-and *c*) Project Report Final -- each in their
-respective folders.
+## 📖 Overview
 
-Journals are stacked under the folder `journals`, one
-folder for each team member.  A sample entry has been
-made for example.
+Cardiovascular disease remains the leading cause of mortality globally. While deep learning models achieve high accuracy in predicting heart disease from clinical measurements, their "black-box" nature makes physicians reluctant to trust automated diagnoses. 
 
-The source code is contained within the folder `code`.
+**Cardio AI** aims to bridge this gap by prioritizing clinical transparency. This project translates complex deep neural network confidence scores into actionable, human-readable clinical narratives, empowering physicians to trust AI-assisted diagnoses.
 
-The documentation is under folder `docs`.
+## 🎯 Problem Statement
 
-All other aspects of code organisation are left to the
-discretion of the user(s).
+*   **Black-Box Predictions:** Deep learning models offer no clinical reasoning or transparent decision pathways.
+*   **Feature Opacity:** It is difficult to understand which specific physiological parameters (out of 13 heterogeneous clinical features) drive a patient's risk score.
+*   **Lack of Visual Evidence:** Clinicians lack interactive visual artifacts (like heatmaps) that map model confidence directly back to patient physiology.
+*   **Absence of Longitudinal Tracking:** Existing tools rarely support patient-history-aware predictions across repeated assessments.
 
+## 💡 Proposed Solution
 
-## Docs
+A web-based explainable cardiac risk prediction system featuring:
 
-As of now, the `docs` is just an organised collection
-of markdown (`md`) files.  But the build procedure is
-using [`mkdocs`](https://google.com/search?q=mkdocs)
-backend.  As a result, any commit into the `master`
-branch of github repository would result in CI/CD based
-build and deployment of the documentation including the
-journals.
+1.  **CNN-LSTM-Attention Deep Learning Model:** Trained on the UCI Cleveland Heart Disease dataset. It uses Gramian Angular Summation Field (GASF) image encoding to convert 1D feature vectors to 2D images for spatial feature extraction.
+2.  **Multi-Method Explainability Engine:** Combines **Grad-CAM heatmaps**, **Attention weights**, and **SHAP values** to provide three complementary lenses on the model's reasoning.
+3.  **Interactive Clinical Dashboard:** A premium Single Page Application (SPA) with dynamic clinical range validations, interactive Plotly charts, and 3D hardware-accelerated backgrounds.
+4.  **Automated Clinical Reporting:** Generates automated PDF reports featuring AI-driven narrative summaries, feature-by-feature clinical interpretations, and guideline-referenced evaluations.
+5.  **Patient Management Portal:** Flask-based backend with a MySQL database to securely track longitudinal patient records.
 
-For a local DEV-version of the docs for viewing and
-testing, install the local env and issue the following
-command:
+## ⚙️ Core Workflow
 
-``` shell
-make docs
-```
+1.  **Data Entry:** Clinician enters 13 patient clinical parameters (age, blood pressure, cholesterol, ECG markers, etc.) via the web form.
+2.  **Preprocessing:** System normalizes inputs using a custom `ClinicalRangeScaler` (physiological-bound normalization) and converts them to a GAF image representation.
+3.  **Prediction:** Runs the prediction through the CNN-LSTM-Attention model.
+4.  **XAI Analysis:** The explainability engine generates a Grad-CAM heatmap, extracts attention weights, and computes SHAP attributions.
+5.  **Dashboard & Reporting:** An interactive dashboard displays the XAI visualizations side-by-side, and a downloadable PDF clinical report is generated.
+6.  **Persistence:** Patient records and AI diagnoses are saved to a MySQL database for longitudinal tracking.
 
-### Local `env` for `docs`
+## 🛠️ Technology Stack
 
-``` shell
+*   **Frontend Engineering:** HTML5, CSS3, Bootstrap 5, Vanilla JavaScript.
+*   **Data Visualization & Aesthetics:** Plotly.js (interactive charts), Three.js & Vanta.js (dynamic backgrounds), Web Audio API (feedback cues).
+*   **Machine Learning:** TensorFlow/Keras (CNN-LSTM-Attention), scikit-learn (preprocessing), pyts (GASF transformations), SHAP.
+*   **Backend & Integration:** Flask (Python REST API), PyMySQL (Database connectivity).
 
-```
+## 👥 Authors
+
+*   **Dhruv Singla** (1024170434)
+*   **Srishti** (1024170451)
