@@ -329,6 +329,14 @@ We have established a formidable core foundation for the Cardio AI prediction sy
     \item Engineered the foundational machine learning backend up to the Convolutional Neural Network (CNN) phase, successfully integrating clinical dataset ingestion, MinMaxScaler standardization, and Gramian Angular Summation Field (GASF) image transformations.
 \end{itemize}
 
+\section{Key Findings}
+
+During the first half of the project lifecycle, the primary engineering effort validated two core hypotheses:
+\begin{itemize}
+    \item \textbf{Data Transformation Efficacy:} Transforming 1D tabular clinical records into 2D Gramian Angular Summation Fields (GASF) allowed the CNN baseline to effectively extract spatial relationships among distinct clinical features, proving the viability of our imaging-based approach for non-image data.
+    \item \textbf{Architectural Decoupling:} The decision to build a state-driven, heavily validated frontend SPA independently of the backend ensured rapid UI iteration. The mock integration tests prove the frontend is fully capable of rendering the complex XAI heatmaps and narrative responses that the backend will eventually serve.
+\end{itemize}
+
 \section{Future Work}
 
 Following our established timeline, our immediate next steps encompass expanding the deep learning model and establishing backend integrations:
@@ -337,6 +345,10 @@ Following our established timeline, our immediate next steps encompass expanding
   \item \textbf{Explainability Engine:} Implement the core Python logic for extracting Grad-CAM heatmaps, Attention weights, and SHAP values.
   \item \textbf{System Integration:} Deploy the Flask backend to establish the RESTful bridge to our completed frontend SPA.
 \end{enumerate}
+
+\section{Final Remarks}
+
+The Cardio AI project remains on schedule and structurally sound. By prioritizing a transparent, highly interactive user interface alongside a solid deep learning foundation, we are well-positioned to deliver an Explainable AI diagnostic tool that bridges the gap between complex neural network predictions and practical clinical trust.
 
 % ===== BIBLIOGRAPHY =====
 
