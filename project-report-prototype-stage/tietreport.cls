@@ -23,7 +23,7 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \fancypagestyle{plain}{
   \fancyhf{}
-  \fancyfoot[C]{\thepage}
+  \fancyfoot[C]{}
   \renewcommand{\headrulewidth}{0pt}
 }
 
