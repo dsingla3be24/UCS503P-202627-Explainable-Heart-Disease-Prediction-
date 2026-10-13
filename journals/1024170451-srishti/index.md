@@ -8,4 +8,4 @@
 - [Week 2: Gantt Chart](w2-ganttchart.md)
 - [Week 3: Activity Diagram](w3-activity-diagram.md)
 - [Week 4: Backend](w4-backend.md)
-- [Week 5: Deployment Diagram & Level-0/1 DFD](w5-deployment-and-dfd-diagrams.md)
+- [Week 5: Deployment Diagram](w5-deployment-diagram.md)
