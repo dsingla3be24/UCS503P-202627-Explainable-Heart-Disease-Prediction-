@@ -1,0 +1,137 @@
+/* style.css - Premium UI for CardioAI */
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #0d6efd; /* deep teal/blue */
+  --secondary-color: #6c757d;
+  --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --text-color: #e2e8f0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+  overflow-x: hidden;
+  /* background removed to allow Vanta 3D canvas to show clearly */
+}
+
+/* Glassmorphic card */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.12);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+/* Hero banner */
+.hero-section {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: var(--bg-gradient);
+  color: var(--text-color);
+}
+.hero-section h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.hero-section p {
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+/* Buttons with glow effect */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.btn-glow:hover {
+  background: #0b5ed7;
+  transform: scale(1.03);
+}
+.btn-glow:active {
+  transform: scale(0.97);
+}
+
+/* Fade‑in animation */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+@keyframes fadeInUp {
+  to { opacity:1; transform: translateY(0); }
+}
+
+/* Responsive grid for results */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Metric badge styling */
+.metric-badge {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+/* Patient ID badge */
+.patient-id-badge {
+  font-size: 0.85rem;
+  color: #adb5bd;
+  margin-left: 0.8rem;
+}
+
+a { color: var(--primary-color); }
+.container-fluid { width: 100%; max-width: 100%; padding-left: 2rem; padding-right: 2rem; }
+
+/* Fix visibility of disabled inputs and selects in dark theme and make them look like simple text */
+.form-select:disabled, .form-control:disabled, input[type="range"]:disabled, input[type="number"]:disabled {
+  color: var(--neon-blue) !important;
+  opacity: 1 !important;
+  cursor: default !important;
+  -webkit-text-fill-color: var(--neon-blue) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  font-weight: 600 !important;
+}
+
+.form-select:disabled:hover, .form-control:disabled:hover, input[type="range"]:disabled:hover, input[type="number"]:disabled:hover,
+.form-select:disabled:focus, .form-control:disabled:focus, input[type="range"]:disabled:focus, input[type="number"]:disabled:focus {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Clinical Diagnosis Report - Patient #3</title>
+<style>
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; margin: 40px; line-height: 1.5; }
+    .header { border-bottom: 3px solid #0056b3; padding-bottom: 20px; margin-bottom: 20px; }
+    .header h1 { margin: 0; color: #0056b3; font-size: 26px; }
+    .header p { margin: 5px 0 0 0; color: #666; font-size: 14px; }
+    .meta-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+    .meta-table td { padding: 8px 10px; border: 1px solid #ddd; font-size: 13px; }
+    .meta-table td.label { font-weight: bold; background-color: #f9f9f9; width: 25%; }
+    .diagnosis-box { padding: 15px; border-radius: 5px; margin-bottom: 25px; font-size: 18px; font-weight: bold; }
+    .diagnosis-box.danger { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    .diagnosis-box.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .section-title { border-bottom: 2px solid #ddd; padding-bottom: 6px; color: #0056b3; font-size: 16px; margin-top: 25px; margin-bottom: 12px; font-weight: bold; }
+    .card { padding: 10px 15px; border-radius: 4px; margin-bottom: 12px; border-left: 5px solid; }
+    .driver-card { background-color: #e8f4fd; border-left-color: #0056b3; border: 1px solid #d0e8fc; border-left-width: 5px; }
+    .abnormal-card { background-color: #fff9e6; border-left-color: #ffc107; border: 1px solid #ffeeba; border-left-width: 5px; }
+    .card h4 { margin: 0 0 6px 0; color: #222; font-size: 14px; }
+    .card p { margin: 3px 0; font-size: 12px; }
+    .interpretation { font-style: italic; color: #444; }
+    .xai-image { text-align: center; margin-top: 20px; margin-bottom: 20px; page-break-inside: avoid; }
+    .xai-image img { max-width: 90%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .footer { text-align: center; font-size: 11px; color: #999; border-top: 1px solid #eee; padding-top: 15px; margin-top: 40px; }
+</style>
+</head>
+<body>
+    <div class="header">
+        <h1>HEART DISEASE PREDICTION REPORT</h1>
+        <p>Explainable Deep Learning Diagnosis Platform (CNN-LSTM-Attention + Grad-CAM)</p>
+    </div>
+    
+    <table class="meta-table">
+        <tr>
+            <td class="label">Patient Index</td>
+            <td>#3</td>
+            <td class="label">True Label (Ground Truth)</td>
+            <td>Normal</td>
+        </tr>
+        <tr>
+            <td class="label">Model Prediction Probability</td>
+            <td>1.63%</td>
+            <td class="label">Analysis Date</td>
+            <td>2026-06-23</td>
+        </tr>
+    </table>
+    
+    <div class="diagnosis-box success">
+        Model Recommendation: NORMAL / LOW RISK
+    </div>
+    
+    <div class="section-title">Patient Clinical Profile</div>
+    <table class="meta-table">
+        <tr>
+            <td class="label">Age</td>
+            <td>34 years</td>
+            <td class="label">Sex</td>
+            <td>Female</td>
+        </tr>
+        <tr>
+            <td class="label">Chest Pain Type (CP)</td>
+            <td>Typical Angina</td>
+            <td class="label">Resting Blood Pressure</td>
+            <td>118 mm Hg</td>
+        </tr>
+        <tr>
+            <td class="label">Serum Cholesterol</td>
+            <td>182 mg/dl</td>
+            <td class="label">Fasting Blood Sugar (FBS)</td>
+            <td>Normal (<=120 mg/dl)</td>
+        </tr>
+        <tr>
+            <td class="label">Resting ECG</td>
+            <td>Left Ventricular Hypertrophy</td>
+            <td class="label">Max Heart Rate (Thalach)</td>
+            <td>174 bpm</td>
+        </tr>
+        <tr>
+            <td class="label">Exercise Induced Angina</td>
+            <td>No</td>
+            <td class="label">ST Depression (Oldpeak)</td>
+            <td>0.0</td>
+        </tr>
+        <tr>
+            <td class="label">ST Slope</td>
+            <td>Upsloping</td>
+            <td class="label">Vessels via Fluoroscopy (CA)</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td class="label">Thalassemia (Thal)</td>
+            <td>Normal</td>
+            <td class="label">Predicted Diagnosis Probability</td>
+            <td><strong>1.63%</strong></td>
+        </tr>
+    </table>
+
+    <div class="section-title">Primary Diagnostic Drivers (AI Focus)</div>
+    
+        <div class="card driver-card">
+            <h4>1. CA</h4>
+            <p><strong>Patient Value:</strong> 0.0 &nbsp;|&nbsp; <strong>Ideal Range:</strong> 0 vessels colored</p>
+            <p class="interpretation"><strong>Interpretation:</strong> 0 major vessels colored (clear arterial paths).</p>
+        </div>
+        
+        <div class="card driver-card">
+            <h4>2. CP</h4>
+            <p><strong>Patient Value:</strong> 1.0 &nbsp;|&nbsp; <strong>Ideal Range:</strong> 1, 2, or 3 (Angina/Non-anginal pain)</p>
+            <p class="interpretation"><strong>Interpretation:</strong> Chest pain type 1 (Angina or localized chest pain).</p>
+        </div>
+        
+        <div class="card driver-card">
+            <h4>3. RESTECG</h4>
+            <p><strong>Patient Value:</strong> 2.0 &nbsp;|&nbsp; <strong>Ideal Range:</strong> 0 (Normal)</p>
+            <p class="interpretation"><strong>Interpretation:</strong> Abnormal ECG resting results (type 2), suggesting hypertrophy or ST-T wave anomalies.</p>
+        </div>
+        
+        <div class="card driver-card">
+            <h4>4. SLOPE</h4>
+            <p><strong>Patient Value:</strong> 1.0 &nbsp;|&nbsp; <strong>Ideal Range:</strong> 1 (Upsloping)</p>
+            <p class="interpretation"><strong>Interpretation:</strong> Upsloping ST segment (normal exercise response).</p>
+        </div>
+        
+    
+    <div class="section-title">Secondary Clinical Abnormalities (Outside Top AI Focus)</div>
+    <p>No other abnormalities detected.</p>
+    
+    <div style="page-break-before: always;"></div>
+    
+    <div class="section-title">Explainability Visualization (Attention vs. Grad-CAM)</div>
+    <div class="xai-image">
+        <img src="/Users/dhruvsingla/Downloads/Heart Disease 2/temp_repo/code/results/patient_3/patient_3_explainability.png" alt="Explainability Chart">
+        <p style="font-size: 11px; color: #666; margin-top: 6px;">Figure 1: Dual-Perspective feature attribution showing global attention weight and patient-specific Grad-CAM contribution.</p>
+    </div>
+    
+    <div style="page-break-before: always;"></div>
+    
+    <div class="section-title">2D Gramian Angular Field (GASF) Heatmap</div>
+    <div class="xai-image">
+        <img src="/Users/dhruvsingla/Downloads/Heart Disease 2/temp_repo/code/results/patient_3/patient_3_gaf.png" alt="GAF Heatmap">
+        <p style="font-size: 11px; color: #666; margin-top: 6px;">Figure 2: 2D feature-feature interaction texture mapping derived via Gramian Angular Summation Field conversion.</p>
+    </div>
+    
+    <div class="footer">
+        Confidential Medical Report - For Professional Use Only - Powered by Explainable Heart Disease Prediction System
+    </div>
+</body>
+</html>

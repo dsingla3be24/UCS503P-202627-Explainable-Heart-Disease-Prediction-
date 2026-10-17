@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------------------
+# Cardio AI - runtime dependencies
+# ---------------------------------------------------------------------------
+# Install with:  pip install -r requirements.txt
+#
+# NOTE: TensorFlow is intentionally NOT required. This project ships a
+# lightweight NumPy / scikit-learn emulator at ./lib/tensorflow.py that is
+# placed on sys.path ahead of site-packages by app.py and main.py. It provides
+# the small subset of the Keras API (Input/Conv2D/LSTM/Attention/Model,
+# GradientTape, etc.) that this codebase uses, so the whole pipeline runs on
+# CPU without the native TensorFlow wheel.
+# ---------------------------------------------------------------------------
+
+Flask>=3.0
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+PyMySQL
+
+# ---- Optional extras -------------------------------------------------------
+# imbalanced-learn    # enables SMOTE oversampling during training
+# shap                # enables SHAP feature attributions in the XAI engine
+# tensorflow==2.13.0  # only if you want to swap the emulator for real Keras

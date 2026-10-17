@@ -1,0 +1,22 @@
+=== CLINICAL EXPLANATION REPORT FOR DOCTOR ===
+Model Diagnosis: NORMAL / LOW RISK (Probability: 1.63%)
+
+Primary Model Drivers (AI Attention Focus):
+1. Feature: CA
+   - Patient Value: 0.0 | Ideal Clinical Range: 0 vessels colored
+   - Clinical Interpretation: 0 major vessels colored (clear arterial paths).
+
+2. Feature: CP
+   - Patient Value: 1.0 | Ideal Clinical Range: 1, 2, or 3 (Angina/Non-anginal pain)
+   - Clinical Interpretation: Chest pain type 1 (Angina or localized chest pain).
+
+3. Feature: RESTECG
+   - Patient Value: 2.0 | Ideal Clinical Range: 0 (Normal)
+   - Clinical Interpretation: Abnormal ECG resting results (type 2), suggesting hypertrophy or ST-T wave anomalies.
+
+4. Feature: SLOPE
+   - Patient Value: 1.0 | Ideal Clinical Range: 1 (Upsloping)
+   - Clinical Interpretation: Upsloping ST segment (normal exercise response).
+
+Secondary Clinical Abnormalities Detected (Outside Top AI Drivers):
+   None detected.

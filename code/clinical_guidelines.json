@@ -1,0 +1,239 @@
+{
+  "trestbps": {
+    "name": "Resting Blood Pressure",
+    "unit": "mmHg",
+    "ideal_range_label": "<120 mmHg",
+    "rules": [
+      {
+        "operator": ">=",
+        "compare_value": 140,
+        "abnormal": true,
+        "interpretation": "Measured at {value} mmHg, indicating Stage 2 Hypertension which significantly strains cardiac walls."
+      },
+      {
+        "operator": ">=",
+        "compare_value": 130,
+        "abnormal": true,
+        "interpretation": "Measured at {value} mmHg, indicating Stage 1 Hypertension."
+      },
+      {
+        "operator": "<",
+        "compare_value": 130,
+        "interpretation": "Measured at {value} mmHg (Normal blood pressure)."
+      }
+    ]
+  },
+  "chol": {
+    "name": "Serum Cholesterol",
+    "unit": "mg/dl",
+    "ideal_range_label": "<200 mg/dl",
+    "rules": [
+      {
+        "operator": ">=",
+        "compare_value": 240,
+        "abnormal": true,
+        "interpretation": "Measured at {value} mg/dl. High cholesterol level, indicating severe plaque build-up risk in coronary arteries."
+      },
+      {
+        "operator": ">=",
+        "compare_value": 200,
+        "abnormal": true,
+        "interpretation": "Measured at {value} mg/dl, which is borderline high."
+      },
+      {
+        "operator": "<",
+        "compare_value": 200,
+        "interpretation": "Measured at {value} mg/dl (Desirable cholesterol level)."
+      }
+    ]
+  },
+  "oldpeak": {
+    "name": "ST Depression",
+    "unit": "mm",
+    "ideal_range_label": "0.0 mm (No ST deviation)",
+    "rules": [
+      {
+        "operator": ">=",
+        "compare_value": 1.0,
+        "abnormal": true,
+        "interpretation": "Measured at {value} mm. Significant ST segment depression suggests active myocardial ischemia during stress."
+      },
+      {
+        "operator": "<",
+        "compare_value": 1.0,
+        "interpretation": "Measured at {value} mm (Normal ECG response)."
+      }
+    ]
+  },
+  "thalach": {
+    "name": "Max Heart Rate Achieved",
+    "unit": "bpm",
+    "ideal_range_label": ">{age_predicted_max_85:.0f} bpm (85% of max predicted {age_predicted_max:.0f} bpm)",
+    "rules": [
+      {
+        "operator": "<",
+        "compare_value": "age_predicted_max_85",
+        "abnormal": true,
+        "interpretation": "Measured at {value} bpm (only {percent_max_hr:.1f}% of age-predicted max). This chronotropic incompetence suggests restricted cardiac output."
+      },
+      {
+        "operator": ">=",
+        "compare_value": "age_predicted_max_85",
+        "interpretation": "Measured at {value} bpm ({percent_max_hr:.1f}% of age-predicted max, which is adequate)."
+      }
+    ]
+  },
+  "ca": {
+    "name": "Major Vessels Colored by Fluoroscopy",
+    "unit": "vessels",
+    "ideal_range_label": "0 vessels colored",
+    "rules": [
+      {
+        "operator": ">",
+        "compare_value": 0,
+        "abnormal": true,
+        "interpretation": "{value:.0f} major vessel(s) colored under fluoroscopy, indicating significant arterial obstruction."
+      },
+      {
+        "operator": "==",
+        "compare_value": 0,
+        "interpretation": "0 major vessels colored (clear arterial paths)."
+      }
+    ]
+  },
+  "thal": {
+    "name": "Thallium Stress Test",
+    "unit": "type",
+    "ideal_range_label": "3 (Normal)",
+    "rules": [
+      {
+        "operator": "==",
+        "compare_value": 6,
+        "abnormal": true,
+        "interpretation": "Fixed defect thalassemia observed (indicating permanent cardiac scar tissue)."
+      },
+      {
+        "operator": "==",
+        "compare_value": 7,
+        "abnormal": true,
+        "interpretation": "Reversible defect thalassemia observed (indicating active myocardial ischemia under stress)."
+      },
+      {
+        "operator": "default",
+        "interpretation": "Normal Thallium stress test results."
+      }
+    ]
+  },
+  "cp": {
+    "name": "Chest Pain Type",
+    "unit": "type",
+    "ideal_range_label": "1, 2, or 3 (Angina/Non-anginal pain)",
+    "rules": [
+      {
+        "operator": "==",
+        "compare_value": 4,
+        "abnormal": true,
+        "interpretation": "Asymptomatic chest pain (type 4). This silent presentation represents a high risk factor as blockages are painless."
+      },
+      {
+        "operator": "default",
+        "interpretation": "Chest pain type {value:.0f} (Angina or localized chest pain)."
+      }
+    ]
+  },
+  "slope": {
+    "name": "Slope of Peak Exercise ST Segment",
+    "unit": "type",
+    "ideal_range_label": "1 (Upsloping)",
+    "rules": [
+      {
+        "operator": "in",
+        "compare_value": [2, 3],
+        "abnormal": true,
+        "interpretation": "Flat/downsloping ST segment (slope type {value:.0f}), strongly correlating with coronary ischemia."
+      },
+      {
+        "operator": "default",
+        "interpretation": "Upsloping ST segment (normal exercise response)."
+      }
+    ]
+  },
+  "exang": {
+    "name": "Exercise Induced Angina",
+    "unit": "binary",
+    "ideal_range_label": "0 (No)",
+    "rules": [
+      {
+        "operator": "==",
+        "compare_value": 1,
+        "abnormal": true,
+        "interpretation": "Angina (chest pain) induced during exercise stress, indicative of myocardial hypoxia."
+      },
+      {
+        "operator": "default",
+        "interpretation": "No angina induced during exercise stress."
+      }
+    ]
+  },
+  "age": {
+    "name": "Age",
+    "unit": "years",
+    "ideal_range_label": "<45 (M) / <55 (F) for low risk",
+    "rules": [
+      {
+        "operator": "default",
+        "interpretation": "Age is {value:.0f} years. Age is a major non-modifiable cardiovascular risk multiplier."
+      }
+    ]
+  },
+  "sex": {
+    "name": "Sex",
+    "unit": "binary",
+    "ideal_range_label": "N/A",
+    "rules": [
+      {
+        "operator": "==",
+        "compare_value": 1,
+        "interpretation": "Patient is Male. Males are statistically associated with higher baseline baseline risk."
+      },
+      {
+        "operator": "default",
+        "interpretation": "Patient is Female. Females are statistically associated with lower baseline baseline risk."
+      }
+    ]
+  },
+  "fbs": {
+    "name": "Fasting Blood Sugar",
+    "unit": "binary",
+    "ideal_range_label": "<=120 mg/dl (0)",
+    "rules": [
+      {
+        "operator": "==",
+        "compare_value": 1,
+        "abnormal": true,
+        "interpretation": "Fasting blood sugar > 120 mg/dl, suggesting impaired glucose tolerance or diabetes."
+      },
+      {
+        "operator": "default",
+        "interpretation": "Normal fasting blood sugar levels."
+      }
+    ]
+  },
+  "restecg": {
+    "name": "Resting ECG",
+    "unit": "type",
+    "ideal_range_label": "0 (Normal)",
+    "rules": [
+      {
+        "operator": ">",
+        "compare_value": 0,
+        "abnormal": true,
+        "interpretation": "Abnormal ECG resting results (type {value:.0f}), suggesting hypertrophy or ST-T wave anomalies."
+      },
+      {
+        "operator": "default",
+        "interpretation": "Normal resting ECG results."
+      }
+    ]
+  }
+}

@@ -466,3 +466,17 @@ TSWLatexianTemp*
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
  
+# ----------------------------------------------------
+# Cardio AI project additions
+# ----------------------------------------------------
+# The ML runtime emulator lives in code/lib and MUST be tracked,
+# even though the generic Python "lib/" rule above ignores it.
+!code/lib/
+!code/lib/**
+# ...but never track bytecode caches re-included above
+code/lib/__pycache__/
+**/__pycache__/
+*.pyc
+
+# Generated per-request PDF/HTML reports (recreated at runtime)
+code/static/temp/

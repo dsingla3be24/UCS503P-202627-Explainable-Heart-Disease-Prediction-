@@ -1,0 +1,32 @@
+=== CLINICAL EXPLANATION REPORT FOR DOCTOR ===
+Model Diagnosis: HEART DISEASE PREDICTED (Probability: 99.87%)
+
+Primary Model Drivers (AI Attention Focus):
+1. Feature: CP
+   - Patient Value: 4.0 | Ideal Clinical Range: 1, 2, or 3 (Angina/Non-anginal pain)
+   - Clinical Interpretation: Asymptomatic chest pain (type 4). This silent presentation represents a high risk factor as blockages are painless.
+
+2. Feature: CA
+   - Patient Value: 1.0 | Ideal Clinical Range: 0 vessels colored
+   - Clinical Interpretation: 1 major vessel(s) colored under fluoroscopy, indicating significant arterial obstruction.
+
+3. Feature: THAL
+   - Patient Value: 7.0 | Ideal Clinical Range: 3 (Normal)
+   - Clinical Interpretation: Reversible defect thalassemia observed (indicating active myocardial ischemia under stress).
+
+4. Feature: RESTECG
+   - Patient Value: 0.0 | Ideal Clinical Range: 0 (Normal)
+   - Clinical Interpretation: Normal resting ECG results.
+
+Secondary Clinical Abnormalities Detected (Outside Top AI Drivers):
+1. Feature: THALACH
+   - Patient Value: 113.0 | Ideal Clinical Range: >141 bpm (85% of max predicted 166 bpm)
+   - Clinical Interpretation: Measured at 113.0 bpm (only 68.1% of age-predicted max). This chronotropic incompetence suggests restricted cardiac output.
+
+2. Feature: OLDPEAK
+   - Patient Value: 1.4 | Ideal Clinical Range: 0.0 mm (No ST deviation)
+   - Clinical Interpretation: Measured at 1.4 mm. Significant ST segment depression suggests active myocardial ischemia during stress.
+
+3. Feature: SLOPE
+   - Patient Value: 2.0 | Ideal Clinical Range: 1 (Upsloping)
+   - Clinical Interpretation: Flat/downsloping ST segment (slope type 2), strongly correlating with coronary ischemia.

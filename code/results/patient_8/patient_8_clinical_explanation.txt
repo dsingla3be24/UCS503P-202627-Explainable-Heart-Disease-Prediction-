@@ -1,0 +1,32 @@
+=== CLINICAL EXPLANATION REPORT FOR DOCTOR ===
+Model Diagnosis: HEART DISEASE PREDICTED (Probability: 82.90%)
+
+Primary Model Drivers (AI Attention Focus):
+1. Feature: CP
+   - Patient Value: 4.0 | Ideal Clinical Range: 1, 2, or 3 (Angina/Non-anginal pain)
+   - Clinical Interpretation: Asymptomatic chest pain (type 4). This silent presentation represents a high risk factor as blockages are painless.
+
+2. Feature: CA
+   - Patient Value: 0.0 | Ideal Clinical Range: 0 vessels colored
+   - Clinical Interpretation: 0 major vessels colored (clear arterial paths).
+
+3. Feature: RESTECG
+   - Patient Value: 2.0 | Ideal Clinical Range: 0 (Normal)
+   - Clinical Interpretation: Abnormal ECG resting results (type 2), suggesting hypertrophy or ST-T wave anomalies.
+
+4. Feature: THAL
+   - Patient Value: 7.0 | Ideal Clinical Range: 3 (Normal)
+   - Clinical Interpretation: Reversible defect thalassemia observed (indicating active myocardial ischemia under stress).
+
+Secondary Clinical Abnormalities Detected (Outside Top AI Drivers):
+1. Feature: CHOL
+   - Patient Value: 282.0 | Ideal Clinical Range: <200 mg/dl
+   - Clinical Interpretation: Measured at 282.0 mg/dl. High cholesterol level, indicating severe plaque build-up risk in coronary arteries.
+
+2. Feature: THALACH
+   - Patient Value: 156.0 | Ideal Clinical Range: >157 bpm (85% of max predicted 185 bpm)
+   - Clinical Interpretation: Measured at 156.0 bpm (only 84.3% of age-predicted max). This chronotropic incompetence suggests restricted cardiac output.
+
+3. Feature: EXANG
+   - Patient Value: 1.0 | Ideal Clinical Range: 0 (No)
+   - Clinical Interpretation: Angina (chest pain) induced during exercise stress, indicative of myocardial hypoxia.

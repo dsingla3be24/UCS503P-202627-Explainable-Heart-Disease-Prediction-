@@ -46,8 +46,41 @@ Cardiovascular disease remains the leading cause of mortality globally. While de
 | :--- | :--- |
 | **Frontend Engineering** | HTML5, CSS3, Bootstrap 5, Vanilla JavaScript |
 | **Data Visualization & Aesthetics** | Plotly.js, Three.js, Vanta.js, Web Audio API |
-| **Machine Learning** | TensorFlow/Keras, scikit-learn, pyts (GASF), SHAP |
+| **Machine Learning** | TensorFlow/Keras (Keras API), scikit-learn, NumPy GASF encoding, SHAP |
 | **Backend & Integration** | Flask (Python REST API), PyMySQL (Database connectivity) |
+
+## 🚀 Quick Start
+
+The complete, runnable application lives in [`code/`](code/) (see
+[`code/README.md`](code/README.md) for full details).
+
+```bash
+cd code
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python app.py            # dashboard at http://localhost:5001
+```
+
+Run the offline ML pipeline (EDA, training, cross-validation, XAI, reports):
+
+```bash
+cd code
+python main.py           # writes plots + metrics to code/results/
+```
+
+## 📁 Repository Layout
+
+| Path | Contents |
+| :--- | :--- |
+| `code/` | **Full application** — Flask API (`app.py`), ML/XAI pipeline (`src/`), dashboard (`templates/`, `static/`), `results/` |
+| `code/backend/` | Prototype-stage CNN baseline notebook + dataset |
+| `code/frontend/` | Prototype-stage static UI (mock, no backend) |
+| `diagrams/` | UML diagrams (use case, activity, sequence, collaboration, class, component, deployment, DFD) |
+| `journals/` | Individual weekly work journals |
+| `project-proposal/` | Proposal (LaTeX + PDF) |
+| `project-report-prototype-stage/` | Mid-semester report |
+| `project-report-final/` | Final report |
+| `docs/`, `mkdocs.yml` | Project documentation site |
 
 ## 👥 Authors
 
