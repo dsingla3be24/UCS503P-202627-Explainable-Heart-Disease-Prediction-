@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Component Diagram" id="hHOqVEmKLRvnwmXtntbv">
+    <mxGraphModel dx="1181" dy="975" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DoZOa5noRHb90ieKlVMf-1" parent="1" style="shape=component;align=center;verticalAlign=top;spacingTop=10;rounded=0;whiteSpace=wrap;html=1;fillColor=#fcfcfc;strokeColor=#000000;strokeWidth=1;" value="&amp;laquo;Component&amp;raquo;&lt;br&gt;&lt;b&gt;CardioAISystem&lt;/b&gt;" vertex="1">
+          <mxGeometry height="400" width="600" x="100" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-2" parent="1" style="shape=rectangle;align=center;verticalAlign=middle;rounded=0;whiteSpace=wrap;html=1;fillColor=#cc8800;strokeColor=#664400;fontColor=#ffffff;strokeWidth=1;" value="&amp;laquo;Component&amp;raquo;&lt;br&gt;&lt;b&gt;FlaskAPI&lt;/b&gt;&lt;br&gt;&lt;i&gt;(Input validation)&lt;/i&gt;" vertex="1">
+          <mxGeometry height="70" width="160" x="200" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-4" parent="1" style="shape=rectangle;align=center;verticalAlign=middle;rounded=0;whiteSpace=wrap;html=1;fillColor=#cc8800;strokeColor=#664400;fontColor=#ffffff;strokeWidth=1;" value="&amp;laquo;Component&amp;raquo;&lt;br&gt;&lt;b&gt;MLCore&lt;/b&gt;&lt;br&gt;&lt;i&gt;(Model inference)&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="160" x="500" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-6" parent="1" style="shape=rectangle;align=center;verticalAlign=middle;rounded=0;whiteSpace=wrap;html=1;fillColor=#cc8800;strokeColor=#664400;fontColor=#ffffff;strokeWidth=1;" value="&amp;laquo;Component&amp;raquo;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="160" x="200" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-8" parent="1" style="shape=rectangle;align=center;verticalAlign=middle;rounded=0;whiteSpace=wrap;html=1;fillColor=#e2e2e2;strokeColor=#666666;fontColor=#000000;strokeWidth=1;" value="&amp;laquo;artifact&amp;raquo;&lt;br&gt;&lt;b&gt;model_best_weights.h5&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="160" x="850" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-9" parent="1" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="16" width="16" x="92" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-10" parent="1" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="16" width="16" x="192" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-11" parent="1" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="16" width="16" x="352" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-12" parent="1" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="16" width="16" x="272" y="212" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-13" parent="1" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="16" width="16" x="492" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-14" parent="1" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="16" width="16" x="272" y="332" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-15" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="2" width="2" x="19" y="189" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-16" edge="1" parent="1" source="DoZOa5noRHb90ieKlVMf-9" style="endArrow=oval;html=1;endFill=0;endSize=12;strokeColor=#000000;strokeWidth=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fontSize=12;" target="DoZOa5noRHb90ieKlVMf-15" value="PredictionAPI&lt;br&gt;&lt;i&gt;(Patient input)&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-17" edge="1" parent="1" source="DoZOa5noRHb90ieKlVMf-9" style="endArrow=none;dashed=0;html=1;strokeColor=#000000;strokeWidth=1;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fontSize=12;exitX=1;exitY=0.5;entryX=0;entryY=0.5;edgeStyle=orthogonalEdgeStyle;rounded=0;" target="DoZOa5noRHb90ieKlVMf-10" value="&amp;laquo;delegate&amp;raquo;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-18" edge="1" parent="1" source="DoZOa5noRHb90ieKlVMf-11" style="endArrow=oval;startArrow=halfCircle;html=1;endFill=0;startFill=0;startSize=12;endSize=12;strokeColor=#000000;strokeWidth=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fontSize=12;edgeStyle=orthogonalEdgeStyle;rounded=0;" target="DoZOa5noRHb90ieKlVMf-13" value="InferenceService">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-19" edge="1" parent="1" source="DoZOa5noRHb90ieKlVMf-12" style="endArrow=oval;startArrow=halfCircle;html=1;endFill=0;startFill=0;startSize=12;endSize=12;strokeColor=#000000;strokeWidth=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;fontSize=12;edgeStyle=orthogonalEdgeStyle;rounded=0;" target="DoZOa5noRHb90ieKlVMf-14" value="DatabaseAccess">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-20" edge="1" parent="1" source="DoZOa5noRHb90ieKlVMf-4" style="endArrow=open;dashed=1;html=1;endFill=0;strokeColor=#000000;strokeWidth=1;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fontSize=12;exitX=1;exitY=0.5;entryX=0;entryY=0.5;edgeStyle=orthogonalEdgeStyle;rounded=0;" target="DoZOa5noRHb90ieKlVMf-8" value="&amp;laquo;use&amp;raquo;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-21" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;jettyWidth=14;jettyHeight=4;fillColor=light-dark(#cc8801, #ededed);strokeColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="22" width="28" x="324" y="348" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-22" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;jettyWidth=14;jettyHeight=4;fillColor=light-dark(#cc8801, #ededed);strokeColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="22" width="28" x="326" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="DoZOa5noRHb90ieKlVMf-24" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;jettyWidth=14;jettyHeight=4;fillColor=light-dark(#cc8801, #ededed);strokeColor=#FFFFFF;" value="" vertex="1">
+          <mxGeometry height="22" width="28" x="630" y="167" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

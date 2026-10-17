@@ -1,0 +1,103 @@
+<mxfile host="Electron" modified="2023-10-08T00:00:00.000Z" agent="Mozilla/5.0" version="21.6.8" type="device">
+  <diagram id="class_diagram" name="Class Diagram">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <mxCell id="c_User" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;User&lt;/b&gt;&lt;br/&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- userId: int&lt;br&gt;- username: string&lt;br&gt;- passwordHash: string&lt;br&gt;- email: string&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ login(): bool&lt;br&gt;+ logout(): void&lt;/p&gt;" style="html=1;whiteSpace=wrap;overflow=hidden;fillColor=#f8f9fa;strokeColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="40" width="180" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Patient" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Patient&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- age: int&lt;br&gt;- gender: char&lt;br&gt;- contactInfo: string&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getPatientDetails(): string&lt;br&gt;+ updateContactInfo(): void&lt;/p&gt;" style="html=1;whiteSpace=wrap;overflow=hidden;fillColor=#f8f9fa;strokeColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="240" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Doctor" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Doctor&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- licenseNum: string&lt;br&gt;- specialization: string&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ addNotes(): void&lt;br&gt;+ fetchHistory(): List&lt;/p&gt;" style="html=1;whiteSpace=wrap;overflow=hidden;fillColor=#f8f9fa;strokeColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="240" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Hospital" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Hospital&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- name: string&lt;br&gt;- address: string&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getDoctors(): List&amp;lt;Doctor&amp;gt;&lt;/p&gt;" style="html=1;whiteSpace=wrap;overflow=hidden;fillColor=#f8f9fa;strokeColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="240" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c_HealthRecord" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;HealthRecord&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- recordId: int&lt;br&gt;- date: DateTime&lt;br&gt;- bloodPressure: float&lt;br&gt;- cholesterol: float&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ validateMetrics(): bool&lt;/p&gt;" style="html=1;whiteSpace=wrap;overflow=hidden;fillColor=#f8f9fa;strokeColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="440" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c_PredictionResult" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PredictionResult&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- resultId: int&lt;br&gt;- riskProb: float&lt;br&gt;- predictedClass: string&lt;br&gt;- doctorNotes: string&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getRiskProb(): float&lt;/p&gt;" style="html=1;whiteSpace=wrap;overflow=hidden;fillColor=#f8f9fa;strokeColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="440" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c_MLService" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MLPredictionService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- modelVersion: string&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ predictRisk(): Result&lt;/p&gt;" style="html=1;whiteSpace=wrap;overflow=hidden;fillColor=#f8f9fa;strokeColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="440" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="c_DBController" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DatabaseController&lt;/b&gt;&lt;br/&gt;&amp;lt;&amp;lt;Singleton&amp;gt;&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- connectionStr: string&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ saveRecord(): bool&lt;br&gt;+ savePrediction(): bool&lt;/p&gt;" style="html=1;whiteSpace=wrap;overflow=hidden;fillColor=#f8f9fa;strokeColor=#333333;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="660" width="180" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Assertions / Notes -->
+        <mxCell id="note_patient" value="{ age &amp;gt; 0 and age &amp;lt; 130 }" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="20" y="200" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="note_pred" value="{ 0.0 &amp;lt;= riskProb &amp;lt;= 1.0 }" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="220" y="590" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="note_record" value="{ cholesterol &amp;gt; 0.0 }" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="20" y="520" width="130" height="50" as="geometry" />
+        </mxCell>
+        <!-- Edges for Notes -->
+        <mxCell id="e_n_pat" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1" source="note_patient" target="c_Patient">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_n_pred" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1" source="note_pred" target="c_PredictionResult">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_n_rec" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1" source="note_record" target="c_HealthRecord">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Generalization (Inheritance) -->
+        <mxCell id="e1" style="endArrow=block;endFill=0;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="c_Patient" target="c_User">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="endArrow=block;endFill=0;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="c_Doctor" target="c_User">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Composition -->
+        <!-- Start from Patient (Diamond) to HealthRecord -->
+        <mxCell id="e3" style="endArrow=none;startArrow=diamondThin;startFill=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="c_Patient" target="c_HealthRecord">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="endArrow=none;startArrow=diamondThin;startFill=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="c_Patient" target="c_PredictionResult">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Aggregation -->
+        <!-- Start from Hospital (Diamond) to Doctor -->
+        <mxCell id="e_agg" style="endArrow=none;startArrow=diamondThin;startFill=0;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="c_Hospital" target="c_Doctor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Association -->
+        <mxCell id="e5" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="c_Doctor" target="c_Patient">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_assoc" value="treats" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="e5">
+          <mxGeometry x="0" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Dependency -->
+        <mxCell id="e6" style="endArrow=classic;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="c_HealthRecord" target="c_MLService">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="endArrow=classic;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="c_MLService" target="c_PredictionResult">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="endArrow=classic;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="c_DBController" target="c_HealthRecord">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" style="endArrow=classic;dashed=1;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="c_DBController" target="c_PredictionResult">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

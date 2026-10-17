@@ -8,3 +8,4 @@
 - [Week 2: Use Case Diagram & Actor Modeling](w2-usecase.md)
 - [Week 3: Frontend Architecture & UI Prototyping](w3-frontend.md)
 - [Week 4: Interaction Modeling (Sequence & Collaboration Diagrams)](w4-%20sequence%20and%20collaboration%20diagram.md)
+- [Week 5: Static Structural Architecture & Modular Component Engineering (Component & Class Diagrams)](w5-component-and-class-diagram.md)
