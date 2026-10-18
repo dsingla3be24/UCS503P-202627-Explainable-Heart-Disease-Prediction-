@@ -253,8 +253,6 @@ Detailed application instructions live in [`code/README.md`](code/README.md).
 | **Dhruv Singla** | 1024170434 |
 | **Srishti** | 1024170451 |
 
-**Guide:** Nisha Thakur — Computer Science and Engineering, TIET Patiala
-
 ---
 
 ## 📄 License
